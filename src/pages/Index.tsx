@@ -5,6 +5,7 @@ import { ProgressCard } from "@/components/ProgressCard";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -38,9 +39,11 @@ const Index = () => {
             <h3 className="text-lg font-semibold text-secondary mb-4">Next session</h3>
             <div className="space-y-4">
               <p className="text-sm text-muted">No upcoming sessions</p>
-              <Button className="w-full" size="lg">
-                Book an appointment
-              </Button>
+              <Link to="/book-appointment">
+                <Button className="w-full" size="lg">
+                  Book an appointment
+                </Button>
+              </Link>
             </div>
           </Card>
         </div>
