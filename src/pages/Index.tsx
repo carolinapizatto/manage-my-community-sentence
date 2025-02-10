@@ -21,10 +21,8 @@ const Index = () => {
         </div>
 
         <div>
-          <h1 className="text-3xl font-bold text-secondary mb-2">Welcome, Carolina</h1>
-          <p className="text-muted mb-6">
-            View and manage your community payback
-          </p>
+          <h1 className="text-3xl font-bold text-secondary mb-2">Your progress</h1>
+          <p className="text-muted mb-6">Track your community payback progress and manage your appointments</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -55,15 +53,6 @@ const Index = () => {
           </p>
         </Card>
 
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold text-secondary mb-4">Guidance</h3>
-          <div className="space-y-4">
-            <p className="text-sm text-muted">
-              Information about your community payback order and what to expect will be shown here.
-            </p>
-          </div>
-        </Card>
-
         <footer className="space-y-6 mt-12">
           <div className="space-y-2">
             <a href="#" className="text-primary hover:underline text-sm block">
@@ -89,4 +78,3 @@ const Index = () => {
 };
 
 export default Index;
-

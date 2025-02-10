@@ -56,30 +56,30 @@ const BookingConfirmation = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-4 sm:flex-row sm:justify-between pt-6 border-t">
-              <div className="space-y-4 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row sm:justify-between pt-6 border-t gap-4">
+              <div className="flex flex-col gap-4">
                 <Button
                   variant="outline"
                   onClick={() => navigate('/book-appointment')}
-                  className="w-full sm:w-auto"
                 >
                   Edit or cancel booking
                 </Button>
                 <Button
                   variant="outline"
                   onClick={() => navigate('/book-appointment')}
-                  className="w-full sm:w-auto"
                 >
                   Make a new booking
                 </Button>
               </div>
-              <Button 
-                onClick={() => navigate('/index-next-session')}
-                className="gap-2"
-              >
-                Return to homepage
-                <ArrowRight className="h-4 w-4" />
-              </Button>
+              <div className="self-end">
+                <Button 
+                  onClick={() => navigate('/index-next-session')}
+                  className="gap-2"
+                >
+                  Return to homepage
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
           </Card>
         </div>

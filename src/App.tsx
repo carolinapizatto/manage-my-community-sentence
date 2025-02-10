@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Homepage from "./pages/Homepage";
 import Index from "./pages/Index";
 import IndexNextSession from "./pages/IndexNextSession";
 import IndexPreviousAttendance from "./pages/IndexPreviousAttendance";
@@ -12,7 +13,6 @@ import SelectDate from "./pages/BookingFlow/SelectDate";
 import SelectTime from "./pages/BookingFlow/SelectTime";
 import CheckAnswers from "./pages/BookingFlow/CheckAnswers";
 import BookingConfirmation from "./pages/BookingFlow/BookingConfirmation";
-import AboutYou from "./pages/AboutYou";
 import YourDetails from "./pages/YourDetails";
 import ViewAppointment from "./pages/ViewAppointment";
 import NotFound from "./pages/NotFound";
@@ -26,7 +26,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AboutYou />} />
+          <Route path="/" element={<Homepage />} />
           <Route path="/index" element={<Index />} />
           <Route path="/index-next-session" element={<IndexNextSession />} />
           <Route path="/index-previous-attendance" element={<IndexPreviousAttendance />} />
