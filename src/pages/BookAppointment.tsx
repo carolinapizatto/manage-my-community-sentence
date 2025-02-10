@@ -137,13 +137,26 @@ const BookAppointment = () => {
 
             <Collapsible open={isFiltersOpen} onOpenChange={setIsFiltersOpen}>
               <CollapsibleTrigger className="flex items-center gap-2 w-full text-left">
-                <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center gap-2">
                   <Filter className="h-4 w-4" />
                   <h3 className="font-semibold">Filter options</h3>
+                </div>
+                <p className="text-sm text-muted ml-2">
+                  {isFiltersOpen ? "Click to hide filters" : "Click to show filters"}
+                </p>
+                <div className="ml-auto text-sm text-muted">
+                  {selectedSkills.length + selectedDays.length + selectedAccess.length + timeOfDay.length} filters applied
                 </div>
               </CollapsibleTrigger>
               
               <CollapsibleContent>
+                <div className="mt-4 p-4 bg-accent rounded-md mb-4">
+                  <p className="text-sm text-muted">
+                    Use these filters to narrow down your search. You can select multiple options in each category.
+                    Click the filters section above to show or hide these options at any time.
+                  </p>
+                </div>
+                
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-4">
                     <Label>Time of day</Label>
