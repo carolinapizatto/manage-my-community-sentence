@@ -16,6 +16,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import Map from "@/components/Map";
 
 const BookAppointment = () => {
+  const navigate = useNavigate();
   const [postcode, setPostcode] = useState("");
   const [date, setDate] = useState<Date>(new Date());
   const [endDate, setEndDate] = useState<Date>(addWeeks(new Date(), 4));
@@ -355,7 +356,9 @@ const BookAppointment = () => {
                           <span>Next available: {placement.nextAvailable}</span>
                         </div>
                       </div>
-                      <Button>View details</Button>
+                      <Button onClick={() => navigate('/book-appointment/select-date', { state: { placement } })}>
+                        View details
+                      </Button>
                     </div>
                   </Card>
                 ))}
