@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { ChevronLeft, Search, CalendarDays, Filter, ArrowUpDown } from "lucide-react";
-import { format } from "date-fns";
+import { format, addWeeks } from "date-fns";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -12,12 +12,14 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Separator } from "@/components/ui/separator";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 const BookAppointment = () => {
   const [postcode, setPostcode] = useState("");
-  const [date, setDate] = useState<Date>();
-  const [endDate, setEndDate] = useState<Date>();
+  const [date, setDate] = useState<Date>(new Date());
+  const [endDate, setEndDate] = useState<Date>(addWeeks(new Date(), 4));
   const [sortBy, setSortBy] = useState("recommended");
+  const [isFiltersOpen, setIsFiltersOpen] = useState(true);
   
   // Time of day filters
   const [timeOfDay, setTimeOfDay] = useState<string[]>([]);
@@ -93,7 +95,7 @@ const BookAppointment = () => {
 
             <div className="space-y-4">
               <Label>Date range</Label>
-              <div className="flex gap-4">
+              <div className="flex gap-4 items-center">
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button variant="outline">
@@ -109,6 +111,7 @@ const BookAppointment = () => {
                     />
                   </PopoverContent>
                 </Popover>
+                <span>to</span>
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button variant="outline">
@@ -124,127 +127,134 @@ const BookAppointment = () => {
                     />
                   </PopoverContent>
                 </Popover>
+                <Button variant="link" className="text-primary">
+                  Change date range
+                </Button>
               </div>
             </div>
 
             <Separator />
 
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Filter className="h-4 w-4" />
-                <h3 className="font-semibold">Filter options</h3>
-              </div>
+            <Collapsible open={isFiltersOpen} onOpenChange={setIsFiltersOpen}>
+              <CollapsibleTrigger className="flex items-center gap-2 w-full text-left">
+                <div className="flex items-center gap-2 mb-4">
+                  <Filter className="h-4 w-4" />
+                  <h3 className="font-semibold">Filter options</h3>
+                </div>
+              </CollapsibleTrigger>
               
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <Label>Time of day</Label>
-                  <div className="flex flex-col gap-2">
-                    {["Morning", "Afternoon", "Evening"].map((time) => (
-                      <div key={time} className="flex items-center space-x-2">
-                        <Checkbox
-                          id={time.toLowerCase()}
-                          checked={timeOfDay.includes(time.toLowerCase())}
-                          onCheckedChange={(checked) => {
-                            setTimeOfDay(
-                              checked
-                                ? [...timeOfDay, time.toLowerCase()]
-                                : timeOfDay.filter((t) => t !== time.toLowerCase())
-                            );
-                          }}
-                        />
-                        <label
-                          htmlFor={time.toLowerCase()}
-                          className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        >
-                          {time}
-                        </label>
-                      </div>
-                    ))}
+              <CollapsibleContent>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <Label>Time of day</Label>
+                    <div className="flex flex-col gap-2">
+                      {["Morning", "Afternoon", "Evening"].map((time) => (
+                        <div key={time} className="flex items-center space-x-2">
+                          <Checkbox
+                            id={time.toLowerCase()}
+                            checked={timeOfDay.includes(time.toLowerCase())}
+                            onCheckedChange={(checked) => {
+                              setTimeOfDay(
+                                checked
+                                  ? [...timeOfDay, time.toLowerCase()]
+                                  : timeOfDay.filter((t) => t !== time.toLowerCase())
+                              );
+                            }}
+                          />
+                          <label
+                            htmlFor={time.toLowerCase()}
+                            className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                          >
+                            {time}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                <div className="space-y-4">
-                  <Label>Days available</Label>
-                  <div className="flex flex-col gap-2">
-                    {days.map((day) => (
-                      <div key={day.id} className="flex items-center space-x-2">
-                        <Checkbox
-                          id={day.id}
-                          checked={selectedDays.includes(day.id)}
-                          onCheckedChange={(checked) => {
-                            setSelectedDays(
-                              checked
-                                ? [...selectedDays, day.id]
-                                : selectedDays.filter((d) => d !== day.id)
-                            );
-                          }}
-                        />
-                        <label
-                          htmlFor={day.id}
-                          className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        >
-                          {day.label}
-                        </label>
-                      </div>
-                    ))}
+                  <div className="space-y-4">
+                    <Label>Days available</Label>
+                    <div className="flex flex-col gap-2">
+                      {days.map((day) => (
+                        <div key={day.id} className="flex items-center space-x-2">
+                          <Checkbox
+                            id={day.id}
+                            checked={selectedDays.includes(day.id)}
+                            onCheckedChange={(checked) => {
+                              setSelectedDays(
+                                checked
+                                  ? [...selectedDays, day.id]
+                                  : selectedDays.filter((d) => d !== day.id)
+                              );
+                            }}
+                          />
+                          <label
+                            htmlFor={day.id}
+                            className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                          >
+                            {day.label}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                <div className="space-y-4">
-                  <Label>Skills</Label>
-                  <div className="flex flex-col gap-2">
-                    {skills.map((skill) => (
-                      <div key={skill.id} className="flex items-center space-x-2">
-                        <Checkbox
-                          id={skill.id}
-                          checked={selectedSkills.includes(skill.id)}
-                          onCheckedChange={(checked) => {
-                            setSelectedSkills(
-                              checked
-                                ? [...selectedSkills, skill.id]
-                                : selectedSkills.filter((s) => s !== skill.id)
-                            );
-                          }}
-                        />
-                        <label
-                          htmlFor={skill.id}
-                          className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        >
-                          {skill.label}
-                        </label>
-                      </div>
-                    ))}
+                  <div className="space-y-4">
+                    <Label>Skills</Label>
+                    <div className="flex flex-col gap-2">
+                      {skills.map((skill) => (
+                        <div key={skill.id} className="flex items-center space-x-2">
+                          <Checkbox
+                            id={skill.id}
+                            checked={selectedSkills.includes(skill.id)}
+                            onCheckedChange={(checked) => {
+                              setSelectedSkills(
+                                checked
+                                  ? [...selectedSkills, skill.id]
+                                  : selectedSkills.filter((s) => s !== skill.id)
+                              );
+                            }}
+                          />
+                          <label
+                            htmlFor={skill.id}
+                            className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                          >
+                            {skill.label}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                <div className="space-y-4">
-                  <Label>Accessibility needs</Label>
-                  <div className="flex flex-col gap-2">
-                    {accessibilityOptions.map((option) => (
-                      <div key={option.id} className="flex items-center space-x-2">
-                        <Checkbox
-                          id={option.id}
-                          checked={selectedAccess.includes(option.id)}
-                          onCheckedChange={(checked) => {
-                            setSelectedAccess(
-                              checked
-                                ? [...selectedAccess, option.id]
-                                : selectedAccess.filter((a) => a !== option.id)
-                            );
-                          }}
-                        />
-                        <label
-                          htmlFor={option.id}
-                          className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        >
-                          {option.label}
-                        </label>
-                      </div>
-                    ))}
+                  <div className="space-y-4">
+                    <Label>Accessibility needs</Label>
+                    <div className="flex flex-col gap-2">
+                      {accessibilityOptions.map((option) => (
+                        <div key={option.id} className="flex items-center space-x-2">
+                          <Checkbox
+                            id={option.id}
+                            checked={selectedAccess.includes(option.id)}
+                            onCheckedChange={(checked) => {
+                              setSelectedAccess(
+                                checked
+                                  ? [...selectedAccess, option.id]
+                                  : selectedAccess.filter((a) => a !== option.id)
+                              );
+                            }}
+                          />
+                          <label
+                            htmlFor={option.id}
+                            className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                          >
+                            {option.label}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </CollapsibleContent>
+            </Collapsible>
           </div>
         </Card>
 
