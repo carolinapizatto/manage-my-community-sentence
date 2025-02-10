@@ -37,44 +37,37 @@ const YourDetails = () => {
             <div className="space-y-6 mt-6">
               <div className="border-b pb-4">
                 <h3 className="font-semibold mb-2">Personal information</h3>
-                <div className="space-y-2">
+                <p className="text-sm text-muted mb-2">To change your personal information, please contact your responsible officer.</p>
+                <div className="space-y-4">
                   <div>
                     <p className="text-sm text-muted">Name</p>
                     <p>Carolina Pizatto Girardi</p>
-                    <Button variant="link" className="text-primary p-0 h-auto">Change</Button>
                   </div>
-                </div>
-              </div>
-
-              <div className="border-b pb-4">
-                <div className="space-y-2">
                   <div>
-                    <p className="text-sm text-muted">Email</p>
-                    <p>carolinapizatto@gmail.com</p>
-                    <Button variant="link" className="text-primary p-0 h-auto">Change</Button>
+                    <p className="text-sm text-muted">Unpaid work hours</p>
+                    <p>100 hours</p>
                   </div>
-                </div>
-              </div>
-
-              <div className="border-b pb-4">
-                <div className="space-y-2">
                   <div>
                     <p className="text-sm text-muted">Address</p>
                     <p>Flat 7</p>
                     <p>4 Burcher Gale Grove</p>
                     <p>London</p>
                     <p>SE15 6FL</p>
-                    <Button variant="link" className="text-primary p-0 h-auto">Change</Button>
                   </div>
                 </div>
               </div>
 
-              <div className="border-b pb-4">
-                <div className="space-y-2">
+              <div className="pb-4">
+                <h3 className="font-semibold mb-2">Contact details</h3>
+                <div className="space-y-4">
                   <div>
-                    <p className="text-sm text-muted">Phone numbers</p>
-                    <p>Mobile: 07418 028044</p>
-                    <p>Landline: Not entered</p>
+                    <p className="text-sm text-muted">Email</p>
+                    <p>carolinapizatto@gmail.com</p>
+                    <Button variant="link" className="text-primary p-0 h-auto">Change</Button>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted">Phone number</p>
+                    <p>07418 028044</p>
                     <Button variant="link" className="text-primary p-0 h-auto">Change</Button>
                   </div>
                 </div>

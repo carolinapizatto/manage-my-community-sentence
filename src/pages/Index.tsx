@@ -1,4 +1,3 @@
-
 import { CalendarDays, ChevronLeft, MapPin, Phone } from "lucide-react";
 import { Header } from "@/components/Header";
 import { ProgressCard } from "@/components/ProgressCard";
@@ -21,9 +20,9 @@ const Index = () => {
         </div>
 
         <div>
-          <h2 className="text-3xl font-bold text-secondary mb-2">Your UPW progress</h2>
+          <h2 className="text-3xl font-bold text-secondary mb-2">Your progress</h2>
           <p className="text-muted mb-6">
-            Track your community playback progress and manage your appointments.
+            Track your community payback progress and manage your appointments.
           </p>
         </div>
 
@@ -32,7 +31,7 @@ const Index = () => {
             total={100}
             completed={0}
             label="Hours completed"
-            description="You get credit for every hour of community playback completed."
+            description="You get credit for every hour of community payback completed."
           />
           
           <Card className="p-6">

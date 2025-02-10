@@ -1,4 +1,3 @@
-
 import { useLocation, useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
@@ -18,8 +17,8 @@ const BookingConfirmation = () => {
         <div className="max-w-2xl mx-auto space-y-8">
           <div className="bg-[#00703c] text-white p-6 rounded-lg space-y-4">
             <h1 className="text-2xl font-bold">Booking confirmed</h1>
-            <p>We've sent you a confirmation email and SMS with your booking details.</p>
-            <p>You'll receive a reminder email and SMS 24 hours before your placement.</p>
+            <p>We've sent you a confirmation email and text message with your booking details.</p>
+            <p>You'll receive a reminder email and text message 24 hours before your placement.</p>
           </div>
 
           <Card className="p-6 space-y-6">
@@ -64,7 +63,7 @@ const BookingConfirmation = () => {
                 Edit or cancel booking
               </Button>
               <Button 
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/index-next-session')}
                 className="gap-2"
               >
                 Return to homepage

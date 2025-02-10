@@ -21,7 +21,7 @@ const BookAppointment = () => {
   const [date, setDate] = useState<Date>(new Date());
   const [endDate, setEndDate] = useState<Date>(addWeeks(new Date(), 4));
   const [sortBy, setSortBy] = useState("recommended");
-  const [isFiltersOpen, setIsFiltersOpen] = useState(true);
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [viewMode, setViewMode] = useState<"list" | "map">("list");
 
   const [timeOfDay, setTimeOfDay] = useState<string[]>([]);
@@ -184,14 +184,14 @@ const BookAppointment = () => {
 
             <Separator />
 
-            <Collapsible open={isFiltersOpen} onOpenChange={setIsFiltersOpen}>
+            <Collapsible open={false} onOpenChange={setIsFiltersOpen}>
               <CollapsibleTrigger className="flex items-center gap-2 w-full text-left">
                 <div className="flex items-center gap-2">
                   <Filter className="h-4 w-4" />
-                  <h3 className="font-semibold">Filter options</h3>
+                  <h3 className="font-semibold">Filter</h3>
                 </div>
                 <p className="text-sm text-muted ml-2">
-                  {isFiltersOpen ? "Click to hide filters" : "Click to show filters"}
+                  {isFiltersOpen ? "Hide filters" : "Show filters"}
                 </p>
                 <div className="ml-auto text-sm text-muted">
                   {selectedSkills.length + selectedDays.length + selectedAccess.length + timeOfDay.length} filters applied
@@ -208,7 +208,7 @@ const BookAppointment = () => {
                 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-4">
-                    <Label>Time of day</Label>
+                    <Label className="font-bold">Time of day</Label>
                     <div className="flex flex-col gap-2">
                       {["Morning", "Afternoon", "Evening"].map((time) => (
                         <div key={time} className="flex items-center space-x-2">
@@ -235,7 +235,7 @@ const BookAppointment = () => {
                   </div>
 
                   <div className="space-y-4">
-                    <Label>Days available</Label>
+                    <Label className="font-bold">Days available</Label>
                     <div className="flex flex-col gap-2">
                       {days.map((day) => (
                         <div key={day.id} className="flex items-center space-x-2">
@@ -262,7 +262,7 @@ const BookAppointment = () => {
                   </div>
 
                   <div className="space-y-4">
-                    <Label>Skills</Label>
+                    <Label className="font-bold">Skills</Label>
                     <div className="flex flex-col gap-2">
                       {skills.map((skill) => (
                         <div key={skill.id} className="flex items-center space-x-2">
@@ -289,7 +289,7 @@ const BookAppointment = () => {
                   </div>
 
                   <div className="space-y-4">
-                    <Label>Accessibility needs</Label>
+                    <Label className="font-bold">Accessibility needs</Label>
                     <div className="flex flex-col gap-2">
                       {accessibilityOptions.map((option) => (
                         <div key={option.id} className="flex items-center space-x-2">
