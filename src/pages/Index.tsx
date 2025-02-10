@@ -1,5 +1,5 @@
 
-import { ArrowRight, Calendar, ChevronLeft } from "lucide-react";
+import { ArrowRight, Calendar, ChevronLeft, MapPin, Phone } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
