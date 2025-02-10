@@ -1,6 +1,5 @@
-
 import { useState } from "react";
-import { ChevronLeft, Search, CalendarDays, Filter, ArrowUpDown } from "lucide-react";
+import { ChevronLeft, Search, CalendarDays, Filter, Map as MapIcon, ListIcon } from "lucide-react";
 import { format, addWeeks } from "date-fns";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
@@ -13,6 +12,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Separator } from "@/components/ui/separator";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import Map from "@/components/Map";
 
 const BookAppointment = () => {
   const [postcode, setPostcode] = useState("");
@@ -20,11 +20,9 @@ const BookAppointment = () => {
   const [endDate, setEndDate] = useState<Date>(addWeeks(new Date(), 4));
   const [sortBy, setSortBy] = useState("recommended");
   const [isFiltersOpen, setIsFiltersOpen] = useState(true);
-  
-  // Time of day filters
+  const [viewMode, setViewMode] = useState<"list" | "map">("list");
+
   const [timeOfDay, setTimeOfDay] = useState<string[]>([]);
-  
-  // Skills filters
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
   const skills = [
     { id: "gardening", label: "Gardening" },
@@ -34,7 +32,6 @@ const BookAppointment = () => {
     { id: "admin", label: "Admin work" },
   ];
 
-  // Days filters
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const days = [
     { id: "monday", label: "Monday" },
@@ -46,7 +43,6 @@ const BookAppointment = () => {
     { id: "sunday", label: "Sunday" },
   ];
 
-  // Accessibility filters
   const [selectedAccess, setSelectedAccess] = useState<string[]>([]);
   const accessibilityOptions = [
     { id: "wheelchair", label: "Wheelchair access" },
@@ -54,6 +50,57 @@ const BookAppointment = () => {
     { id: "ground", label: "Ground floor only" },
     { id: "bathroom", label: "Accessible bathroom" },
   ];
+
+  const [placements] = useState([
+    {
+      id: 1,
+      name: "Community Garden Maintenance",
+      address: "123 Green Lane, London SE1",
+      distance: "0.8 miles",
+      nextAvailable: "Tomorrow",
+      description: "Help maintain local community gardens, including planting, weeding, and general upkeep.",
+      skills: ["gardening", "maintenance"],
+      times: ["morning", "afternoon"],
+      latitude: 51.5074,
+      longitude: -0.1276
+    },
+    {
+      id: 2,
+      name: "Local Park Clean-up",
+      address: "45 Park Road, London E2",
+      distance: "1.2 miles",
+      nextAvailable: "Today",
+      description: "Join our team in keeping local parks clean and safe for everyone.",
+      skills: ["cleaning"],
+      times: ["morning"],
+      latitude: 51.5174,
+      longitude: -0.1376
+    },
+    {
+      id: 3,
+      name: "Senior Center Support",
+      address: "78 Elder Street, London N1",
+      distance: "1.5 miles",
+      nextAvailable: "Next Week",
+      description: "Assist with administrative tasks and general maintenance at the local senior center.",
+      skills: ["admin", "maintenance"],
+      times: ["afternoon"],
+      latitude: 51.5274,
+      longitude: -0.1476
+    },
+    {
+      id: 4,
+      name: "Community Center Painting",
+      address: "90 Community Road, London W1",
+      distance: "2.0 miles",
+      nextAvailable: "This Weekend",
+      description: "Help refresh our community center with a new coat of paint.",
+      skills: ["painting"],
+      times: ["morning", "afternoon"],
+      latitude: 51.5374,
+      longitude: -0.1576
+    }
+  ]);
 
   return (
     <div className="min-h-screen bg-[#f3f2f1]">
@@ -274,23 +321,56 @@ const BookAppointment = () => {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold text-secondary">Available placements</h3>
-            <ToggleGroup type="single" value={sortBy} onValueChange={setSortBy}>
-              <ToggleGroupItem value="recommended">
-                Recommended
-              </ToggleGroupItem>
-              <ToggleGroupItem value="nearest">
-                Nearest
-              </ToggleGroupItem>
-              <ToggleGroupItem value="soonest">
-                Soonest
-              </ToggleGroupItem>
-            </ToggleGroup>
+            <div className="flex gap-4">
+              <ToggleGroup type="single" value={viewMode} onValueChange={(value: "list" | "map") => setViewMode(value)}>
+                <ToggleGroupItem value="list" aria-label="List view">
+                  <ListIcon className="h-4 w-4" />
+                </ToggleGroupItem>
+                <ToggleGroupItem value="map" aria-label="Map view">
+                  <MapIcon className="h-4 w-4" />
+                </ToggleGroupItem>
+              </ToggleGroup>
+              <ToggleGroup type="single" value={sortBy} onValueChange={setSortBy}>
+                <ToggleGroupItem value="recommended">Recommended</ToggleGroupItem>
+                <ToggleGroupItem value="nearest">Nearest</ToggleGroupItem>
+                <ToggleGroupItem value="soonest">Soonest</ToggleGroupItem>
+              </ToggleGroup>
+            </div>
           </div>
-          <Card className="p-6">
-            <p className="text-sm text-muted">
-              Enter your postcode above to see available work placements in your area.
-            </p>
-          </Card>
+
+          {postcode ? (
+            viewMode === "list" ? (
+              <div className="space-y-4">
+                {placements.map((placement) => (
+                  <Card key={placement.id} className="p-6">
+                    <div className="flex justify-between items-start">
+                      <div className="space-y-2">
+                        <h4 className="text-lg font-semibold">{placement.name}</h4>
+                        <p className="text-muted">{placement.address}</p>
+                        <p className="text-sm">{placement.description}</p>
+                        <div className="flex gap-2 text-sm text-muted">
+                          <span>{placement.distance}</span>
+                          <span>•</span>
+                          <span>Next available: {placement.nextAvailable}</span>
+                        </div>
+                      </div>
+                      <Button>View details</Button>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            ) : (
+              <Card className="p-6">
+                <Map locations={placements} />
+              </Card>
+            )
+          ) : (
+            <Card className="p-6">
+              <p className="text-sm text-muted">
+                Enter your postcode above to see available work placements in your area.
+              </p>
+            </Card>
+          )}
         </div>
 
         <footer className="space-y-6 mt-12">
