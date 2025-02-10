@@ -15,7 +15,7 @@ const IndexPreviousAttendance = () => {
         <div className="flex items-center space-x-2">
           <ChevronLeft className="h-4 w-4" />
           <Link to="/" className="text-primary hover:underline text-sm">
-            Back to About you
+            Back to homepage
           </Link>
         </div>
 
@@ -65,12 +65,8 @@ const IndexPreviousAttendance = () => {
 
         <footer className="space-y-6 mt-12">
           <div className="space-y-2">
-            <div className="flex items-center space-x-2">
-              <Phone className="h-4 w-4 text-muted" />
-              <span className="font-semibold">Helpline: 0300 123 23 23</span>
-            </div>
             <a href="#" className="text-primary hover:underline text-sm block">
-              Other ways to contact us
+              How to contact us
             </a>
           </div>
 

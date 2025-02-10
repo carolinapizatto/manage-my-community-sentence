@@ -37,21 +37,21 @@ const Homepage = () => {
           <Link to="/book-appointment">
             <Card className="p-6 hover:shadow transition-shadow">
               <div className="flex justify-between items-center">
-                <h3 className="text-lg font-semibold text-primary">Book an appointment</h3>
+                <h3 className="text-lg font-semibold text-primary">Find unpaid work near you</h3>
+                <ArrowRight className="h-5 w-5 text-primary" />
+              </div>
+            </Card>
+          </Link>
+
+          <Link to="#">
+            <Card className="p-6 hover:shadow transition-shadow">
+              <div className="flex justify-between items-center">
+                <h3 className="text-lg font-semibold text-primary">Guidance</h3>
                 <ArrowRight className="h-5 w-5 text-primary" />
               </div>
             </Card>
           </Link>
         </div>
-
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold text-secondary mb-4">Guidance</h3>
-          <div className="space-y-4">
-            <p className="text-sm text-muted">
-              Information about your community payback order and what to expect will be shown here.
-            </p>
-          </div>
-        </Card>
       </main>
     </div>
   );

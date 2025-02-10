@@ -1,4 +1,3 @@
-
 import { ChevronLeft } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
@@ -14,7 +13,7 @@ const YourDetails = () => {
         <div className="flex items-center space-x-2">
           <ChevronLeft className="h-4 w-4" />
           <Link to="/" className="text-primary hover:underline text-sm">
-            Back to About you
+            Back to homepage
           </Link>
         </div>
 
@@ -81,4 +80,3 @@ const YourDetails = () => {
 };
 
 export default YourDetails;
-
