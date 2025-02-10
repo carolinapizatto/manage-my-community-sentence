@@ -9,6 +9,7 @@ import BookAppointment from "./pages/BookAppointment";
 import SelectDate from "./pages/BookingFlow/SelectDate";
 import SelectTime from "./pages/BookingFlow/SelectTime";
 import CheckAnswers from "./pages/BookingFlow/CheckAnswers";
+import BookingConfirmation from "./pages/BookingFlow/BookingConfirmation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/book-appointment/select-date" element={<SelectDate />} />
           <Route path="/book-appointment/select-time" element={<SelectTime />} />
           <Route path="/book-appointment/check-answers" element={<CheckAnswers />} />
+          <Route path="/book-appointment/confirmation" element={<BookingConfirmation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

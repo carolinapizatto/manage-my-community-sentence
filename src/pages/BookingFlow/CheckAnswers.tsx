@@ -19,7 +19,9 @@ const CheckAnswers = () => {
       title: "Booking confirmed",
       description: "Your placement has been successfully booked.",
     });
-    navigate("/"); // Navigate to dashboard or confirmation page
+    navigate("/book-appointment/confirmation", { 
+      state: { placement, selectedDate, selectedTime } 
+    });
   };
 
   if (!placement || !selectedDate || !selectedTime) {
