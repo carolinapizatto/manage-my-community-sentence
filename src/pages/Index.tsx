@@ -1,4 +1,5 @@
-import { CalendarDays, ChevronLeft, MapPin, Phone } from "lucide-react";
+
+import { CalendarDays, ChevronLeft, MapPin } from "lucide-react";
 import { Header } from "@/components/Header";
 import { ProgressCard } from "@/components/ProgressCard";
 import { Button } from "@/components/ui/button";
@@ -14,15 +15,15 @@ const Index = () => {
       <main className="container mx-auto px-4 py-8 space-y-8">
         <div className="flex items-center space-x-2">
           <ChevronLeft className="h-4 w-4" />
-          <a href="#" className="text-primary hover:underline text-sm">
-            Back to About you
-          </a>
+          <Link to="/" className="text-primary hover:underline text-sm">
+            Back to homepage
+          </Link>
         </div>
 
         <div>
-          <h2 className="text-3xl font-bold text-secondary mb-2">Your progress</h2>
+          <h1 className="text-3xl font-bold text-secondary mb-2">Welcome, Carolina</h1>
           <p className="text-muted mb-6">
-            Track your community payback progress and manage your appointments.
+            View and manage your community payback
           </p>
         </div>
 
@@ -54,14 +55,19 @@ const Index = () => {
           </p>
         </Card>
 
+        <Card className="p-6">
+          <h3 className="text-lg font-semibold text-secondary mb-4">Guidance</h3>
+          <div className="space-y-4">
+            <p className="text-sm text-muted">
+              Information about your community payback order and what to expect will be shown here.
+            </p>
+          </div>
+        </Card>
+
         <footer className="space-y-6 mt-12">
           <div className="space-y-2">
-            <div className="flex items-center space-x-2">
-              <Phone className="h-4 w-4 text-muted" />
-              <span className="font-semibold">Helpline: 0300 123 23 23</span>
-            </div>
             <a href="#" className="text-primary hover:underline text-sm block">
-              Other ways to contact us
+              How to contact us
             </a>
           </div>
 
@@ -83,3 +89,4 @@ const Index = () => {
 };
 
 export default Index;
+

@@ -184,7 +184,7 @@ const BookAppointment = () => {
 
             <Separator />
 
-            <Collapsible open={false} onOpenChange={setIsFiltersOpen}>
+            <Collapsible open={isFiltersOpen} onOpenChange={setIsFiltersOpen}>
               <CollapsibleTrigger className="flex items-center gap-2 w-full text-left">
                 <div className="flex items-center gap-2">
                   <Filter className="h-4 w-4" />

@@ -44,7 +44,7 @@ const YourDetails = () => {
                     <p>Carolina Pizatto Girardi</p>
                   </div>
                   <div>
-                    <p className="text-sm text-muted">Unpaid work hours</p>
+                    <p className="text-sm text-muted">Unpaid work hours required to complete</p>
                     <p>100 hours</p>
                   </div>
                   <div>
@@ -81,3 +81,4 @@ const YourDetails = () => {
 };
 
 export default YourDetails;
+

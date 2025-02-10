@@ -1,3 +1,4 @@
+
 import { useLocation, useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
@@ -56,12 +57,22 @@ const BookingConfirmation = () => {
             </div>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-between pt-6 border-t">
-              <Button
-                variant="outline"
-                onClick={() => navigate('/book-appointment')}
-              >
-                Edit or cancel booking
-              </Button>
+              <div className="space-y-4 w-full sm:w-auto">
+                <Button
+                  variant="outline"
+                  onClick={() => navigate('/book-appointment')}
+                  className="w-full sm:w-auto"
+                >
+                  Edit or cancel booking
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => navigate('/book-appointment')}
+                  className="w-full sm:w-auto"
+                >
+                  Make a new booking
+                </Button>
+              </div>
               <Button 
                 onClick={() => navigate('/index-next-session')}
                 className="gap-2"
