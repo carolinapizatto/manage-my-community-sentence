@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ChevronLeft, Search, CalendarDays, Filter, Map as MapIcon, ListIcon } from "lucide-react";
 import { format, addWeeks } from "date-fns";
 import { Header } from "@/components/Header";
