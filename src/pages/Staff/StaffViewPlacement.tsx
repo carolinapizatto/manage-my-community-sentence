@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ChevronLeft, Plus, UserPlus, UserMinus, AlertTriangle } from "lucide-react";
+import { ChevronLeft, UserPlus, AlertTriangle } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -53,9 +53,8 @@ const StaffViewPlacement = () => {
               <p className="text-2xl font-bold">{totalSlots - bookedSlots}</p>
             </div>
             <div className="space-y-2">
-              <h3 className="text-sm font-medium text-muted">Expected turnout</h3>
+              <h3 className="text-sm font-medium text-muted">Predicted turnout based on attendance history</h3>
               <p className="text-2xl font-bold">{expectedTurnout} people</p>
-              <p className="text-sm text-muted">Based on attendance history</p>
             </div>
           </div>
         </Card>
@@ -67,12 +66,12 @@ const StaffViewPlacement = () => {
               <DialogTrigger asChild>
                 <Button>
                   <UserPlus className="h-4 w-4 mr-2" />
-                  Add person
+                  Add attendee
                 </Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Add person to placement</DialogTitle>
+                  <DialogTitle>Add attendee to placement</DialogTitle>
                   <DialogDescription>
                     Search for a person to add them to this placement.
                   </DialogDescription>
@@ -98,9 +97,9 @@ const StaffViewPlacement = () => {
                     <div>{attendee.hoursRemaining} hours</div>
                     <div className="flex justify-between items-center">
                       <span>{attendee.attendanceRate}</span>
-                      <Button variant="ghost" size="icon" className="text-destructive">
-                        <UserMinus className="h-4 w-4" />
-                      </Button>
+                      <button className="text-primary hover:underline text-sm">
+                        Remove attendee
+                      </button>
                     </div>
                   </div>
                 ))}

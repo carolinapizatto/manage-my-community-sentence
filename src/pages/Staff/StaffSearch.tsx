@@ -1,14 +1,12 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChevronLeft, Search, Filter, UserSearch, MapPin } from "lucide-react";
+import { ChevronLeft, Search } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const StaffSearch = () => {
   const navigate = useNavigate();
@@ -59,78 +57,30 @@ const StaffSearch = () => {
         <div>
           <h2 className="text-3xl font-bold text-secondary mb-2">Search placements</h2>
           <p className="text-muted mb-6">
-            Search for placements by location, name, or attendee
+            You can search by placement postcode, name, CRN or by the name of the person on probation
           </p>
         </div>
 
         <Card className="p-6">
-          <Tabs defaultValue="location" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-3 lg:w-[400px]">
-              <TabsTrigger value="location">
-                <MapPin className="h-4 w-4 mr-2" />
-                Location
-              </TabsTrigger>
-              <TabsTrigger value="placement">
-                <Search className="h-4 w-4 mr-2" />
-                Placement
-              </TabsTrigger>
-              <TabsTrigger value="person">
-                <UserSearch className="h-4 w-4 mr-2" />
-                Person
-              </TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="location" className="space-y-4">
-              <Label htmlFor="postcode">Enter postcode</Label>
+          <form className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="search">Search for a placement</Label>
               <div className="flex gap-4">
                 <Input
-                  id="postcode"
-                  placeholder="e.g. SW1A 1AA"
+                  id="search"
+                  type="search"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="max-w-[200px]"
+                  className="max-w-[400px]"
+                  placeholder="Enter search terms"
                 />
-                <Button>
+                <Button type="submit">
                   <Search className="h-4 w-4 mr-2" />
                   Search
                 </Button>
               </div>
-            </TabsContent>
-
-            <TabsContent value="placement" className="space-y-4">
-              <Label htmlFor="placement">Search by placement name</Label>
-              <div className="flex gap-4">
-                <Input
-                  id="placement"
-                  placeholder="e.g. Community Garden"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="max-w-[300px]"
-                />
-                <Button>
-                  <Search className="h-4 w-4 mr-2" />
-                  Search
-                </Button>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="person" className="space-y-4">
-              <Label htmlFor="person">Search by person's name or ID</Label>
-              <div className="flex gap-4">
-                <Input
-                  id="person"
-                  placeholder="Name or ID number"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="max-w-[300px]"
-                />
-                <Button>
-                  <Search className="h-4 w-4 mr-2" />
-                  Search
-                </Button>
-              </div>
-            </TabsContent>
-          </Tabs>
+            </div>
+          </form>
         </Card>
 
         <div className="space-y-4">
