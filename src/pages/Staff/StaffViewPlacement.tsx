@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ChevronLeft, UserPlus, AlertTriangle } from "lucide-react";
@@ -62,23 +61,10 @@ const StaffViewPlacement = () => {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold text-secondary">Attendee list</h3>
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button>
-                  <UserPlus className="h-4 w-4 mr-2" />
-                  Add attendee
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Add attendee to placement</DialogTitle>
-                  <DialogDescription>
-                    Search for a person to add them to this placement.
-                  </DialogDescription>
-                </DialogHeader>
-                {/* Add person form would go here */}
-              </DialogContent>
-            </Dialog>
+            <Button onClick={() => navigate('/staff-book', { state: { placement } })}>
+              <UserPlus className="h-4 w-4 mr-2" />
+              Add attendee
+            </Button>
           </div>
 
           <Card>
