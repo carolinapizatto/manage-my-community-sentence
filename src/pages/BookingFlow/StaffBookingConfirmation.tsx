@@ -29,7 +29,6 @@ const StaffBookingConfirmation = () => {
                 <ul className="list-disc pl-5 space-y-2">
                   <li>Confirmation email with booking details</li>
                   <li>Confirmation text message</li>
-                  <li>Calendar invite</li>
                   <li>QR code for attendance tracking</li>
                 </ul>
               </div>

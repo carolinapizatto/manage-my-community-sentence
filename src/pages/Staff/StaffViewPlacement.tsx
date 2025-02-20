@@ -1,10 +1,10 @@
+
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ChevronLeft, UserPlus, AlertTriangle } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
 
 const StaffViewPlacement = () => {
@@ -37,7 +37,7 @@ const StaffViewPlacement = () => {
 
         <div>
           <h2 className="text-3xl font-bold text-secondary mb-2">{placement?.name || "Community Garden Maintenance"}</h2>
-          <p className="text-sm text-muted mb-2">Monday 15 April 2024, 09:00 - 16:00</p>
+          <p className="text-muted">{placement?.date || "Monday 15 April 2024, 09:00 - 16:00"}</p>
           <p className="text-muted">{placement?.address || "123 Green Lane, London SE1"}</p>
         </div>
 
@@ -79,7 +79,7 @@ const StaffViewPlacement = () => {
               <div className="divide-y">
                 {attendees.map((attendee) => (
                   <div key={attendee.id} className="grid grid-cols-5 gap-4 p-4 items-center">
-                    <div className="font-mono">{attendee.id}</div>
+                    <div className="text-sm">{attendee.id}</div>
                     <div className="col-span-2">{attendee.name}</div>
                     <div>{attendee.hoursRemaining} hours</div>
                     <div className="flex justify-between items-center">
