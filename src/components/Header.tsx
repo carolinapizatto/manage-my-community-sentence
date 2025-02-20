@@ -1,21 +1,17 @@
-
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
 export const Header = () => {
-  return (
-    <header>
+  return <header>
       <div className="bg-black text-white p-2 text-center text-sm">
-        <a href="https://www.gov.uk" className="hover:underline">
-          GOV.UK
-        </a>
+        <a href="https://www.gov.uk" className="">HMMPS Community Payback</a>
       </div>
       <div className="bg-[#1d70b8] text-white">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
             <div>
-              <span className="block text-sm">HMPPS</span>
-              <span className="block text-2xl font-bold">Community Payback</span>
+              
+              <span className="block text-2xl font-bold">
+            </span>
             </div>
           </div>
         </div>
@@ -27,6 +23,5 @@ export const Header = () => {
           </Button>
         </div>
       </div>
-    </header>
-  );
+    </header>;
 };
