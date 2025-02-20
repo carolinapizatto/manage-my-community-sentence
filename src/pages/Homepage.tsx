@@ -1,14 +1,16 @@
+
 import { ArrowRight } from "lucide-react";
 import { Header } from "@/components/Header";
+import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 
 const Homepage = () => {
   return (
-    <div className="min-h-screen bg-[#f3f2f1]">
+    <div className="min-h-screen bg-[#f3f2f1] flex flex-col">
       <Header />
       
-      <main className="container mx-auto px-4 py-8 space-y-8">
+      <main className="container mx-auto px-4 py-8 space-y-8 flex-grow">
         <div>
           <h2 className="text-3xl font-bold text-secondary mb-2">Welcome, Carolina</h2>
           <p className="text-muted mb-6">View and manage your community payback</p>
@@ -58,6 +60,8 @@ const Homepage = () => {
           </Link>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 };
