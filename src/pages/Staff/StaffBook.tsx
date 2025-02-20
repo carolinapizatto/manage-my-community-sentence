@@ -24,7 +24,12 @@ const StaffBook = () => {
   const handlePersonSelect = (person: typeof people[0]) => {
     navigate("/book-appointment/select-date", {
       state: {
-        placement,
+        placement: {
+          name: "Community Garden Maintenance",
+          address: "123 Green Lane, London SE1",
+          totalSlots: 15,
+          bookedSlots: 8,
+        },
         person,
       },
     });
@@ -79,7 +84,7 @@ const StaffBook = () => {
                 <div className="flex justify-between items-start">
                   <div className="space-y-2">
                     <h4 className="text-lg font-semibold">{person.name}</h4>
-                    <p className="text-muted font-mono">{person.id}</p>
+                    <p className="text-sm text-muted">{person.id}</p>
                     <div className="flex gap-4 text-sm text-muted">
                       <span>DOB: {person.dob}</span>
                       <span>•</span>

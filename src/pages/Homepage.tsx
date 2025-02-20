@@ -52,6 +52,12 @@ const Homepage = () => {
             </Card>
           </Link>
         </div>
+
+        <div className="mt-12 text-center">
+          <Link to="/staff-search" className="text-sm text-muted hover:underline">
+            Staff portal
+          </Link>
+        </div>
       </main>
     </div>
   );

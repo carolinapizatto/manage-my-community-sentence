@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,6 +18,7 @@ import StaffSearch from "./pages/Staff/StaffSearch";
 import StaffViewPlacement from "./pages/Staff/StaffViewPlacement";
 import StaffBook from "./pages/Staff/StaffBook";
 import NotFound from "./pages/NotFound";
+import StaffBookingConfirmation from "./pages/BookingFlow/StaffBookingConfirmation";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +43,7 @@ const App = () => (
           <Route path="/staff-search" element={<StaffSearch />} />
           <Route path="/staff-view-placement" element={<StaffViewPlacement />} />
           <Route path="/staff-book" element={<StaffBook />} />
+          <Route path="/staff-booking-confirmation" element={<StaffBookingConfirmation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
