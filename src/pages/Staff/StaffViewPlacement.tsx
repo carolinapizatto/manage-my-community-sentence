@@ -37,6 +37,7 @@ const StaffViewPlacement = () => {
 
         <div>
           <h2 className="text-3xl font-bold text-secondary mb-2">{placement?.name || "Community Garden Maintenance"}</h2>
+          <p className="text-sm text-muted mb-2">Monday 15 April 2024, 09:00 - 16:00</p>
           <p className="text-muted">{placement?.address || "123 Green Lane, London SE1"}</p>
         </div>
 

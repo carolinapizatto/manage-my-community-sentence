@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ChevronLeft, Search } from "lucide-react";
@@ -14,15 +13,14 @@ const StaffBook = () => {
   const { placement } = location.state || {};
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Mock data for people on probation
   const people = [
-    { id: "CRN123456", name: "John Smith", dob: "15/03/1985", address: "123 Main St, London" },
-    { id: "CRN789012", name: "Sarah Johnson", dob: "22/07/1990", address: "45 High St, Manchester" },
-    { id: "CRN345678", name: "Michael Brown", dob: "10/11/1982", address: "67 Church Rd, Birmingham" },
+    { id: "CRN123456", name: "John Smith", dob: "15/03/1985" },
+    { id: "CRN789012", name: "Sarah Johnson", dob: "22/07/1990" },
+    { id: "CRN345678", name: "Michael Brown", dob: "10/11/1982" },
   ];
 
   const handlePersonSelect = (person: typeof people[0]) => {
-    navigate("/book-appointment/select-date", {
+    navigate("/staff-check-answers", {
       state: {
         placement: {
           name: "Community Garden Maintenance",
@@ -31,6 +29,8 @@ const StaffBook = () => {
           bookedSlots: 8,
         },
         person,
+        selectedDate: "2024-04-15",
+        selectedTime: "09:00 - 16:00"
       },
     });
   };
@@ -85,10 +85,8 @@ const StaffBook = () => {
                   <div className="space-y-2">
                     <h4 className="text-lg font-semibold">{person.name}</h4>
                     <p className="text-sm text-muted">{person.id}</p>
-                    <div className="flex gap-4 text-sm text-muted">
+                    <div className="text-sm text-muted">
                       <span>DOB: {person.dob}</span>
-                      <span>•</span>
-                      <span>{person.address}</span>
                     </div>
                   </div>
                   <Button onClick={() => handlePersonSelect(person)}>

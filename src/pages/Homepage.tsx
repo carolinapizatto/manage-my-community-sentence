@@ -1,4 +1,3 @@
-
 import { ArrowRight } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
@@ -53,9 +52,9 @@ const Homepage = () => {
           </Link>
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-12">
           <Link to="/staff-search" className="text-sm text-muted hover:underline">
-            Staff portal
+            Staff-facing flow
           </Link>
         </div>
       </main>

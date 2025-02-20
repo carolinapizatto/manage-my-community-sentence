@@ -19,6 +19,7 @@ import StaffViewPlacement from "./pages/Staff/StaffViewPlacement";
 import StaffBook from "./pages/Staff/StaffBook";
 import NotFound from "./pages/NotFound";
 import StaffBookingConfirmation from "./pages/BookingFlow/StaffBookingConfirmation";
+import StaffCheckAnswers from "./pages/Staff/StaffCheckAnswers";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/staff-search" element={<StaffSearch />} />
           <Route path="/staff-view-placement" element={<StaffViewPlacement />} />
           <Route path="/staff-book" element={<StaffBook />} />
+          <Route path="/staff-check-answers" element={<StaffCheckAnswers />} />
           <Route path="/staff-booking-confirmation" element={<StaffBookingConfirmation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
