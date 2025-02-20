@@ -6,7 +6,7 @@ export const Header = () => {
         <a href="https://www.gov.uk" className="">HMMPS Community Payback</a>
       </div>
       <div className="bg-[#1d70b8] text-white">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-0 py-[5px]">
           <div className="flex items-center space-x-2">
             <div>
               
