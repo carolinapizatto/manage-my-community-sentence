@@ -53,12 +53,9 @@ const Homepage = () => {
           </Link>
         </div>
 
-        <div className="mt-12 space-y-2">
-          <Link to="/staff-search" className="text-sm text-muted hover:underline block">
+        <div className="mt-12">
+          <Link to="/staff-search" className="text-sm text-muted hover:underline">
             Staff-facing flow
-          </Link>
-          <Link to="/login" className="text-sm text-muted hover:underline block">
-            Sign in with GOV.UK One Login
           </Link>
         </div>
       </main>
