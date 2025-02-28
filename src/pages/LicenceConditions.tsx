@@ -68,8 +68,8 @@ const LicenceConditions = () => {
               <span>!</span>
             </div>
             <div>
-              <p className="font-bold mb-2">You must follow these conditions to avoid being recalled to prison.</p>
-              <p>Ask your probation worker to explain anything you do not understand.</p>
+              <p className="font-bold mb-2">You must follow these conditions to avoid being recalled to court.</p>
+              <p>If you don't follow these conditions you might be sent to prison. Ask your probation worker to explain anything you do not understand.</p>
             </div>
           </div>
         </div>
@@ -77,7 +77,6 @@ const LicenceConditions = () => {
         <Card className="p-6 mb-6">
           <h3 className="text-lg font-semibold mb-4">Your conditions expire on:</h3>
           <p className="font-bold text-xl mb-4">27 July 2025</p>
-          <p className="font-medium mb-2">You must:</p>
         </Card>
 
         <div className="space-y-6">
