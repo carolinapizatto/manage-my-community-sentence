@@ -1,3 +1,4 @@
+
 import { CalendarDays, ChevronLeft, MapPin, Phone } from "lucide-react";
 import { Header } from "@/components/Header";
 import { ProgressCard } from "@/components/ProgressCard";
@@ -52,7 +53,12 @@ const IndexNextSession = () => {
         </div>
 
         <Card className="p-6">
-          <h3 className="text-lg font-semibold text-secondary mb-4">Previous attendance</h3>
+          <div className="flex justify-between items-start mb-4">
+            <h3 className="text-lg font-semibold text-secondary">Previous attendance</h3>
+            <Link to="/appointments" className="text-primary hover:underline text-sm">
+              View all appointments
+            </Link>
+          </div>
           <p className="text-sm text-muted">
             Your previous attendance will be shown here after your first session.
           </p>

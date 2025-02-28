@@ -34,7 +34,7 @@ const Homepage = () => {
             </Card>
           </Link>
 
-          <Link to="/index-next-session">
+          <Link to="/appointments">
             <Card className="p-6 hover:shadow transition-shadow">
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-semibold text-primary">Past and upcoming appointments</h3>

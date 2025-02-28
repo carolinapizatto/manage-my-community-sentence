@@ -17,6 +17,7 @@ import YourDetails from "./pages/YourDetails";
 import ViewAppointment from "./pages/ViewAppointment";
 import Messages from "./pages/Messages";
 import LicenceConditions from "./pages/LicenceConditions";
+import Appointments from "./pages/Appointments";
 import StaffSearch from "./pages/Staff/StaffSearch";
 import StaffViewPlacement from "./pages/Staff/StaffViewPlacement";
 import StaffBook from "./pages/Staff/StaffBook";
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/book-appointment/select-time" element={<SelectTime />} />
           <Route path="/book-appointment/check-answers" element={<CheckAnswers />} />
           <Route path="/book-appointment/confirmation" element={<BookingConfirmation />} />
+          <Route path="/appointments" element={<Appointments />} />
           <Route path="/staff-search" element={<StaffSearch />} />
           <Route path="/staff-view-placement" element={<StaffViewPlacement />} />
           <Route path="/staff-book" element={<StaffBook />} />
