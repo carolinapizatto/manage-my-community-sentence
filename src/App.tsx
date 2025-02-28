@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,6 +15,8 @@ import CheckAnswers from "./pages/BookingFlow/CheckAnswers";
 import BookingConfirmation from "./pages/BookingFlow/BookingConfirmation";
 import YourDetails from "./pages/YourDetails";
 import ViewAppointment from "./pages/ViewAppointment";
+import Messages from "./pages/Messages";
+import LicenceConditions from "./pages/LicenceConditions";
 import StaffSearch from "./pages/Staff/StaffSearch";
 import StaffViewPlacement from "./pages/Staff/StaffViewPlacement";
 import StaffBook from "./pages/Staff/StaffBook";
@@ -36,6 +39,8 @@ const App = () => (
           <Route path="/index-previous-attendance" element={<IndexPreviousAttendance />} />
           <Route path="/your-details" element={<YourDetails />} />
           <Route path="/view-appointment" element={<ViewAppointment />} />
+          <Route path="/messages" element={<Messages />} />
+          <Route path="/licence-conditions" element={<LicenceConditions />} />
           <Route path="/book-appointment" element={<BookAppointment />} />
           <Route path="/book-appointment/select-date" element={<SelectDate />} />
           <Route path="/book-appointment/select-time" element={<SelectTime />} />

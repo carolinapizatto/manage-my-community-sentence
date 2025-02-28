@@ -1,5 +1,5 @@
 
-import { CalendarDays, ChevronLeft, MapPin } from "lucide-react";
+import { ArrowRight, CalendarDays, ChevronLeft, MapPin } from "lucide-react";
 import { Header } from "@/components/Header";
 import { ProgressCard } from "@/components/ProgressCard";
 import { Button } from "@/components/ui/button";
@@ -52,6 +52,26 @@ const Index = () => {
             Your previous attendance will be shown here after your first session.
           </p>
         </Card>
+
+        <div className="space-y-4">
+          <Link to="/messages">
+            <Card className="p-6 hover:shadow transition-shadow">
+              <div className="flex justify-between items-center">
+                <h3 className="text-lg font-semibold text-primary">Messages</h3>
+                <ArrowRight className="h-5 w-5 text-primary" />
+              </div>
+            </Card>
+          </Link>
+
+          <Link to="/licence-conditions">
+            <Card className="p-6 hover:shadow transition-shadow">
+              <div className="flex justify-between items-center">
+                <h3 className="text-lg font-semibold text-primary">Licence conditions</h3>
+                <ArrowRight className="h-5 w-5 text-primary" />
+              </div>
+            </Card>
+          </Link>
+        </div>
 
         <footer className="space-y-6 mt-12">
           <div className="space-y-2">
