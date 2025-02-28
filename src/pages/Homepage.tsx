@@ -46,7 +46,7 @@ const Homepage = () => {
           <Link to="/licence-conditions">
             <Card className="p-6 hover:shadow transition-shadow">
               <div className="flex justify-between items-center">
-                <h3 className="text-lg font-semibold text-primary">Licence conditions</h3>
+                <h3 className="text-lg font-semibold text-primary">Your conditions</h3>
                 <ArrowRight className="h-5 w-5 text-primary" />
               </div>
             </Card>
