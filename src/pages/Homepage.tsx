@@ -34,6 +34,15 @@ const Homepage = () => {
             </Card>
           </Link>
 
+          <Link to="/index-next-session">
+            <Card className="p-6 hover:shadow transition-shadow">
+              <div className="flex justify-between items-center">
+                <h3 className="text-lg font-semibold text-primary">Past and upcoming appointments</h3>
+                <ArrowRight className="h-5 w-5 text-primary" />
+              </div>
+            </Card>
+          </Link>
+
           <Link to="/messages">
             <Card className="p-6 hover:shadow transition-shadow">
               <div className="flex justify-between items-center">
@@ -51,30 +60,17 @@ const Homepage = () => {
               </div>
             </Card>
           </Link>
-
-          <Link to="/book-appointment">
-            <Card className="p-6 hover:shadow transition-shadow">
-              <div className="flex justify-between items-center">
-                <h3 className="text-lg font-semibold text-primary">Find unpaid work near you</h3>
-                <ArrowRight className="h-5 w-5 text-primary" />
-              </div>
-            </Card>
-          </Link>
-
-          <Link to="#">
-            <Card className="p-6 hover:shadow transition-shadow">
-              <div className="flex justify-between items-center">
-                <h3 className="text-lg font-semibold text-primary">Guidance</h3>
-                <ArrowRight className="h-5 w-5 text-primary" />
-              </div>
-            </Card>
-          </Link>
         </div>
 
-        <div className="mt-12">
-          <Link to="/staff-search" className="text-sm text-muted hover:underline">
-            Staff-facing flow
+        <div className="mt-12 space-y-3">
+          <Link to="/book-appointment" className="text-sm text-primary hover:underline">
+            Find unpaid work near you
           </Link>
+          <div className="border-t border-gray-200 pt-3">
+            <Link to="/staff-search" className="text-sm text-muted hover:underline">
+              Staff-facing flow
+            </Link>
+          </div>
         </div>
       </main>
     </div>
