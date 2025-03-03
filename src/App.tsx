@@ -5,7 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
-import Index from "./pages/Index";
+import YourProgress from "./pages/YourProgress";
 import IndexNextSession from "./pages/IndexNextSession";
 import IndexPreviousAttendance from "./pages/IndexPreviousAttendance";
 import BookAppointment from "./pages/BookAppointment";
@@ -36,7 +36,8 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/index" element={<Index />} />
+          <Route path="/your-progress" element={<YourProgress />} />
+          <Route path="/index" element={<YourProgress />} /> {/* Keeping old route for backward compatibility */}
           <Route path="/index-next-session" element={<IndexNextSession />} />
           <Route path="/index-previous-attendance" element={<IndexPreviousAttendance />} />
           <Route path="/your-details" element={<YourDetails />} />
