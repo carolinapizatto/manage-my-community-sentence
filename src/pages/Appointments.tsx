@@ -1,5 +1,4 @@
-
-import { Calendar, ChevronLeft, Info, MapPin, MessageCircle } from "lucide-react";
+import { Calendar, ChevronLeft, Info, MapPin } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -117,10 +116,6 @@ const Appointments = () => {
           <Button variant="outline" size="sm" className="text-xs flex items-center">
             <Calendar className="h-3 w-3 mr-1" />
             Add to calendar
-          </Button>
-          <Button variant="outline" size="sm" className="text-xs flex items-center">
-            <Info className="h-3 w-3 mr-1" />
-            What to expect (video)
           </Button>
         </div>
       </div>
