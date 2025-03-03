@@ -12,8 +12,8 @@ const Appointments = () => {
       id: 1,
       date: "Thursday 27 Feb 2025",
       time: "10:00am - 11:00am",
-      title: "Unpaid Work Placement",
-      location: "Jobcentre Plus, P.345 Mosley St, Manchester M2 3HZ",
+      title: "Community Garden Maintenance",
+      location: "123 Garden Street, London SE1 7TH",
       contact: "Karen Smith",
       description: "Initial meeting with your assigned work coach. The work coach will be able to guide and support you and, where appropriate, help you into work by providing personalised advice using their knowledge of local work opportunities."
     },
@@ -30,8 +30,8 @@ const Appointments = () => {
       id: 3,
       date: "Thursday 27 Feb 2025",
       time: "4:00pm - 4:30pm",
-      title: "Unpaid Work Placement",
-      location: "Ingeus, 20 Lever Street, Manchester M1 1DW",
+      title: "Community Garden Maintenance",
+      location: "123 Garden Street, London SE1 7TH",
       contact: "Jack Kennedy",
       description: "Introductory session to help you overcome barriers to financial security, including low incomes, debt, disrupted access to benefits and insufficient income."
     },
