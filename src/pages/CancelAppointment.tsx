@@ -1,12 +1,13 @@
 
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ChevronLeft, AlertTriangle } from "lucide-react";
+import { ChevronLeft, AlertTriangle, Upload } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Alert } from "@/components/Alert";
 
@@ -17,10 +18,26 @@ const CancelAppointment = () => {
   const { appointment, step = "reason" } = location.state || {};
   
   const [reason, setReason] = useState("");
+  const [supportingFiles, setSupportingFiles] = useState<File[]>([]);
+  const [fileNames, setFileNames] = useState<string[]>([]);
   
   if (!appointment) {
     return <div>Missing appointment information. Please go back and try again.</div>;
   }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files && files.length > 0) {
+      const newFiles = Array.from(files);
+      setSupportingFiles(prevFiles => [...prevFiles, ...newFiles]);
+      setFileNames(prevNames => [...prevNames, ...newFiles.map(file => file.name)]);
+    }
+  };
+
+  const handleRemoveFile = (index: number) => {
+    setSupportingFiles(prevFiles => prevFiles.filter((_, i) => i !== index));
+    setFileNames(prevNames => prevNames.filter((_, i) => i !== index));
+  };
 
   const handleContinue = () => {
     if (!reason.trim()) {
@@ -32,11 +49,13 @@ const CancelAppointment = () => {
       return;
     }
     
-    // Navigate to confirmation step with the reason
+    // Navigate to confirmation step with the reason and files
     navigate("/cancel-appointment", { 
       state: { 
         appointment, 
         reason,
+        supportingFiles,
+        fileNames,
         step: "confirm" 
       } 
     });
@@ -44,10 +63,12 @@ const CancelAppointment = () => {
 
   const handleConfirmCancel = () => {
     // Here you would typically make an API call to cancel the booking
+    // and upload the supporting files
     navigate("/cancel-appointment", { 
       state: { 
         appointment,
         reason,
+        fileNames,
         step: "success" 
       } 
     });
@@ -60,34 +81,86 @@ const CancelAppointment = () => {
         return (
           <Card className="p-6">
             <div className="space-y-6">
-              <Alert variant="warning" title="You are about to cancel the following appointment:">
-                <p className="mt-2">
-                  <strong>{appointment.name}</strong><br />
-                  {appointment.date} at {appointment.time}<br />
-                  {appointment.location}
-                </p>
-              </Alert>
+              <h3 className="text-lg font-medium">Check your answers</h3>
+              
+              <div className="space-y-8">
+                <div className="border-b pb-4">
+                  <div className="flex justify-between">
+                    <dt className="font-medium">Appointment</dt>
+                    <dd className="flex justify-end gap-2">
+                      <Button 
+                        variant="link" 
+                        className="p-0 h-auto" 
+                        onClick={() => navigate("/view-appointment")}
+                      >
+                        Change
+                      </Button>
+                    </dd>
+                  </div>
+                  <dd className="mt-2">
+                    <strong>{appointment.name}</strong><br />
+                    {appointment.date} at {appointment.time}<br />
+                    {appointment.location}
+                  </dd>
+                </div>
+              
+                <div className="border-b pb-4">
+                  <div className="flex justify-between">
+                    <dt className="font-medium">Reason for cancelling</dt>
+                    <dd className="flex justify-end gap-2">
+                      <Button 
+                        variant="link" 
+                        className="p-0 h-auto" 
+                        onClick={() => navigate("/cancel-appointment", { state: { appointment, step: "reason", reason: location.state.reason, fileNames: location.state.fileNames } })}
+                      >
+                        Change
+                      </Button>
+                    </dd>
+                  </div>
+                  <dd className="mt-2 bg-muted p-3 rounded whitespace-pre-wrap">
+                    {location.state.reason}
+                  </dd>
+                </div>
 
-              <div className="space-y-4">
-                <p>
-                  <strong>Your reason for cancelling:</strong>
-                </p>
-                <p className="bg-muted p-3 rounded">
-                  {location.state.reason}
-                </p>
-                <p>
-                  This action cannot be undone. If you still need to attend a session, 
-                  you will need to book a new appointment.
-                </p>
+                {location.state.fileNames && location.state.fileNames.length > 0 && (
+                  <div className="border-b pb-4">
+                    <div className="flex justify-between">
+                      <dt className="font-medium">Supporting evidence</dt>
+                      <dd className="flex justify-end gap-2">
+                        <Button 
+                          variant="link" 
+                          className="p-0 h-auto" 
+                          onClick={() => navigate("/cancel-appointment", { state: { appointment, step: "reason", reason: location.state.reason, fileNames: location.state.fileNames } })}
+                        >
+                          Change
+                        </Button>
+                      </dd>
+                    </div>
+                    <dd className="mt-2">
+                      <ul className="list-disc pl-5">
+                        {location.state.fileNames.map((fileName: string, index: number) => (
+                          <li key={index}>{fileName}</li>
+                        ))}
+                      </ul>
+                    </dd>
+                  </div>
+                )}
+
+                <Alert variant="warning">
+                  <p>
+                    This action cannot be undone. If you still need to attend a session, 
+                    you will need to book a new appointment.
+                  </p>
+                </Alert>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
-                  onClick={() => navigate("/cancel-appointment", { state: { appointment, step: "reason", reason: location.state.reason } })} 
+                  onClick={() => navigate("/cancel-appointment", { state: { appointment, step: "reason", reason: location.state.reason, fileNames: location.state.fileNames } })} 
                   variant="outline"
                   className="w-full sm:w-auto"
                 >
-                  Go back
+                  Back
                 </Button>
                 <Button 
                   onClick={handleConfirmCancel}
@@ -122,16 +195,16 @@ const CancelAppointment = () => {
         return (
           <Card className="p-6">
             <div className="space-y-6">
-              <Alert variant="warning">
-                <p className="font-medium text-amber-800">
+              <div>
+                <p className="mb-4">
                   You are about to cancel the following appointment:
                 </p>
-                <p className="mt-2">
+                <p className="font-medium">
                   <strong>{appointment.name}</strong><br />
                   {appointment.date} at {appointment.time}<br />
                   {appointment.location}
                 </p>
-              </Alert>
+              </div>
 
               <div className="space-y-4">
                 <div className="space-y-2">
@@ -147,6 +220,54 @@ const CancelAppointment = () => {
                     required
                   />
                 </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="supporting-evidence">
+                    Upload supporting evidence (optional)
+                  </Label>
+                  <div className="border-2 border-dashed border-input rounded-md p-4">
+                    <div className="flex flex-col items-center justify-center gap-2">
+                      <Upload className="h-8 w-8 text-muted-foreground" />
+                      <p className="text-sm text-muted-foreground">
+                        Drag and drop files here or click to upload
+                      </p>
+                      <Input
+                        id="supporting-evidence"
+                        type="file"
+                        className="hidden"
+                        onChange={handleFileChange}
+                        multiple
+                      />
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => document.getElementById("supporting-evidence")?.click()}
+                      >
+                        Select files
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                {fileNames.length > 0 && (
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium">Uploaded files:</p>
+                    <ul className="space-y-2">
+                      {fileNames.map((name, index) => (
+                        <li key={index} className="flex items-center justify-between bg-muted p-2 rounded-md">
+                          <span className="text-sm truncate max-w-[80%]">{name}</span>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleRemoveFile(index)}
+                          >
+                            Remove
+                          </Button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -194,7 +315,7 @@ const CancelAppointment = () => {
               if (location.state?.step === "success") {
                 navigate("/appointments");
               } else if (location.state?.step === "confirm") {
-                navigate("/cancel-appointment", { state: { appointment, step: "reason", reason: location.state.reason } });
+                navigate("/cancel-appointment", { state: { appointment, step: "reason", reason: location.state.reason, fileNames: location.state.fileNames } });
               } else {
                 navigate(-1);
               }
