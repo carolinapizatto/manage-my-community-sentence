@@ -1,4 +1,5 @@
-import { Calendar, ChevronLeft, Info, MapPin, MessageCircle } from "lucide-react";
+
+import { Calendar, ChevronLeft, Info, MapPin, MessageCircle, Plus } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -66,8 +67,14 @@ const Appointments = () => {
           </Link>
         </div>
 
-        <div>
+        <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-secondary mb-2">Appointments</h1>
+          <Link to="/appointment-type">
+            <Button className="flex items-center gap-2">
+              <Plus className="h-4 w-4" />
+              Book appointment
+            </Button>
+          </Link>
         </div>
 
         <div className="bg-gray-100 p-4 border-l-4 border-gray-500 mb-6">
