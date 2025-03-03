@@ -5,7 +5,6 @@ import { Separator } from "@/components/ui/separator";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-
 const Appointments = () => {
   const [appointments] = useState([{
     id: 1,
@@ -93,17 +92,15 @@ const Appointments = () => {
           <h4 className="font-semibold text-base">Appointment type</h4>
           <p>{appointment.type}</p>
           <p className="font-medium">{appointment.title}</p>
-          <div className="flex items-center gap-2">
-            <p className="text-sm text-muted">Key contact:</p>
+          <div className="flex items-center gap-2 py-0">
+            <p className="font-semibold text-base text-slate-950">Key contact</p>
             <p>{appointment.contact}</p>
-            {appointment.type === "General" && appointment.contact === "Julie Myers" && (
-              <Link to="/messages/new">
+            {appointment.type === "General" && appointment.contact === "Julie Myers" && <Link to="/messages/new">
                 <Button variant="outline" size="sm" className="text-xs flex items-center ml-2">
                   <MessageSquare className="h-3 w-3 mr-1" />
                   Message
                 </Button>
-              </Link>
-            )}
+              </Link>}
           </div>
         </div>
         
@@ -187,5 +184,4 @@ const Appointments = () => {
       </main>
     </div>;
 };
-
 export default Appointments;
