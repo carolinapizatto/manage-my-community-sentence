@@ -1,5 +1,4 @@
-
-import { ChevronLeft, Mail, MailOpen, Paperclip, Reply } from "lucide-react";
+import { ChevronLeft, Mail, MailOpen, Paperclip, Reply, Plus } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -9,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 
-// Define message type
 interface Message {
   id: number;
   subject: string;
@@ -19,13 +17,12 @@ interface Message {
   sender: "practitioner" | "user";
   hasAttachment?: boolean;
   attachmentName?: string;
-  thread?: number; // For grouping messages in the same conversation
+  thread?: number;
 }
 
 const Messages = () => {
   const navigate = useNavigate();
   
-  // Sample messages data with conversations
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
@@ -66,7 +63,6 @@ const Messages = () => {
     }
   ]);
 
-  // Function to mark a message as read
   const markAsRead = (id: number) => {
     setMessages(messages.map(message => 
       message.id === id ? { ...message, read: true } : message
@@ -77,7 +73,6 @@ const Messages = () => {
     });
   };
 
-  // Group messages by thread
   const messageThreads = messages.reduce((acc, message) => {
     const threadId = message.thread || message.id;
     if (!acc[threadId]) {
@@ -87,7 +82,6 @@ const Messages = () => {
     return acc;
   }, {} as Record<number, Message[]>);
 
-  // Sort threads by date of most recent message
   const sortedThreads = Object.values(messageThreads).sort((a, b) => {
     const aDate = new Date(a[a.length - 1].date);
     const bDate = new Date(b[b.length - 1].date);
@@ -106,14 +100,22 @@ const Messages = () => {
           </Link>
         </div>
 
-        <div>
-          <h1 className="text-3xl font-bold text-secondary mb-2">Messages</h1>
-          <p className="text-muted mb-6">Communicate with your probation practitioner and view important updates about your community sentence</p>
+        <div className="flex justify-between items-center">
+          <div>
+            <h1 className="text-3xl font-bold text-secondary mb-2">Messages</h1>
+            <p className="text-muted mb-6">Communicate with your probation practitioner and view important updates about your community sentence</p>
+          </div>
+          <Button
+            onClick={() => navigate("/messages/new")}
+            className="bg-primary text-white"
+          >
+            <Plus className="mr-2 h-4 w-4" />
+            Create new message
+          </Button>
         </div>
 
         <div className="space-y-4">
           {sortedThreads.map((thread) => {
-            // Take the most recent message for display
             const latestMessage = thread[thread.length - 1];
             const hasUnread = thread.some(m => !m.read && m.sender === "practitioner");
             
@@ -135,7 +137,6 @@ const Messages = () => {
                     <p className="text-sm text-muted mt-1">{latestMessage.date}</p>
                     <p className="mt-3 mb-4">{latestMessage.content}</p>
                     
-                    {/* Show attachment indicator if any message in thread has attachment */}
                     {thread.some(m => m.hasAttachment) && (
                       <div className="flex items-center gap-2 text-sm text-muted mb-4">
                         <Paperclip className="h-4 w-4" />

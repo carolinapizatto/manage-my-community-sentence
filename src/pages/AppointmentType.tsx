@@ -1,46 +1,47 @@
 
 import { ChevronLeft } from "lucide-react";
 import { Header } from "@/components/Header";
-import { Card } from "@/components/ui/card";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { useState } from "react";
 
 const AppointmentType = () => {
   const navigate = useNavigate();
+  const [selectedType, setSelectedType] = useState<string>("2"); // Default to "Unpaid Work" (id: 2)
   
   const appointmentTypes = [
     {
-      id: 1,
+      id: "1",
       title: "Meeting with Probation Officer",
       description: "Schedule a meeting with your probation officer to discuss your progress and any concerns.",
+      disabled: true
     },
     {
-      id: 2,
+      id: "2",
       title: "Unpaid Work",
       description: "Book an unpaid work placement session to fulfill your community service requirements.",
+      disabled: false
     },
     {
-      id: 3,
+      id: "3",
       title: "Rehabilitation Activity",
       description: "Participate in activities designed to help with rehabilitation and reduce reoffending.",
+      disabled: true
     },
     {
-      id: 4,
-      title: "Behaviour Programmes",
-      description: "Attend structured programmes aimed at addressing specific behavioral issues.",
-    },
-    {
-      id: 5,
+      id: "5",
       title: "Interventions",
       description: "Access specialized interventions tailored to your individual needs and circumstances.",
+      disabled: true
     },
   ];
 
-  const handleSelectType = (id: number) => {
-    // For now, all types navigate to the book appointment flow
-    // In a real app, different types might have different flows
+  const handleContinue = () => {
+    // Navigate to book appointment with the selected type
     navigate("/book-appointment", {
-      state: { appointmentTypeId: id }
+      state: { appointmentTypeId: parseInt(selectedType) }
     });
   };
 
@@ -61,15 +62,45 @@ const AppointmentType = () => {
           <p className="text-muted mb-6">Choose the type of appointment you would like to book</p>
         </div>
 
-        <div className="space-y-4">
-          {appointmentTypes.map((type) => (
-            <Card key={type.id} className="p-6 hover:bg-accent transition-colors cursor-pointer" onClick={() => handleSelectType(type.id)}>
-              <div className="space-y-2">
-                <h3 className="text-lg font-semibold">{type.title}</h3>
-                <p className="text-sm text-muted">{type.description}</p>
+        <div className="bg-white p-6 border border-gray-200 rounded-md">
+          <RadioGroup 
+            value={selectedType} 
+            onValueChange={setSelectedType}
+            className="space-y-6"
+          >
+            {appointmentTypes.map((type) => (
+              <div 
+                key={type.id} 
+                className={`flex items-start space-x-3 p-4 border rounded-md ${
+                  type.disabled ? 'opacity-50 cursor-not-allowed' : 'hover:border-primary cursor-pointer'
+                }`}
+              >
+                <RadioGroupItem 
+                  value={type.id} 
+                  id={`appointment-type-${type.id}`} 
+                  disabled={type.disabled}
+                  className="mt-1"
+                />
+                <div className="flex-1">
+                  <Label 
+                    htmlFor={`appointment-type-${type.id}`}
+                    className={`text-lg font-medium block mb-1 ${type.disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+                  >
+                    {type.title}
+                  </Label>
+                  <p className="text-sm text-muted">
+                    {type.description}
+                  </p>
+                </div>
               </div>
-            </Card>
-          ))}
+            ))}
+          </RadioGroup>
+          
+          <div className="mt-8">
+            <Button onClick={handleContinue} disabled={!selectedType}>
+              Continue
+            </Button>
+          </div>
         </div>
       </main>
     </div>

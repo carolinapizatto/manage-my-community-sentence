@@ -44,6 +44,7 @@ const App = () => (
           <Route path="/your-details" element={<YourDetails />} />
           <Route path="/view-appointment" element={<ViewAppointment />} />
           <Route path="/messages" element={<Messages />} />
+          <Route path="/messages/new" element={<MessageDetail />} />
           <Route path="/messages/:threadId" element={<MessageDetail />} />
           <Route path="/licence-conditions" element={<LicenceConditions />} />
           <Route path="/book-appointment" element={<BookAppointment />} />
