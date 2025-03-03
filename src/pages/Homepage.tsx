@@ -62,10 +62,7 @@ const Homepage = () => {
           </Link>
         </div>
 
-        <div className="mt-12 space-y-3">
-          <Link to="/book-appointment" className="text-sm text-primary hover:underline">
-            Find unpaid work near you
-          </Link>
+        <div className="mt-12">
           <div className="border-t border-gray-200 pt-3">
             <Link to="/staff-search" className="text-sm text-muted hover:underline">
               Staff-facing flow
