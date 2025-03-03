@@ -16,6 +16,7 @@ import BookingConfirmation from "./pages/BookingFlow/BookingConfirmation";
 import YourDetails from "./pages/YourDetails";
 import ViewAppointment from "./pages/ViewAppointment";
 import Messages from "./pages/Messages";
+import MessageDetail from "./pages/MessageDetail";
 import LicenceConditions from "./pages/LicenceConditions";
 import Appointments from "./pages/Appointments";
 import AppointmentType from "./pages/AppointmentType";
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/your-details" element={<YourDetails />} />
           <Route path="/view-appointment" element={<ViewAppointment />} />
           <Route path="/messages" element={<Messages />} />
+          <Route path="/messages/:threadId" element={<MessageDetail />} />
           <Route path="/licence-conditions" element={<LicenceConditions />} />
           <Route path="/book-appointment" element={<BookAppointment />} />
           <Route path="/book-appointment/select-date" element={<SelectDate />} />
