@@ -1,3 +1,4 @@
+
 import { CalendarDays, ChevronLeft, MapPin, Phone } from "lucide-react";
 import { Header } from "@/components/Header";
 import { ProgressCard } from "@/components/ProgressCard";
@@ -40,7 +41,7 @@ const IndexPreviousAttendance = () => {
               <p className="text-sm text-muted">No upcoming sessions</p>
               <Link to="/book-appointment">
                 <Button className="w-full" size="lg">
-                  Book an appointment
+                  Find placements near you
                 </Button>
               </Link>
             </div>
@@ -64,12 +65,6 @@ const IndexPreviousAttendance = () => {
         </Card>
 
         <footer className="space-y-6 mt-12">
-          <div className="space-y-2">
-            <a href="#" className="text-primary hover:underline text-sm block">
-              How to contact us
-            </a>
-          </div>
-
           <Separator />
 
           <div className="space-y-4">
