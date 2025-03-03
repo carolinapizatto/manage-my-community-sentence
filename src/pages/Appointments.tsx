@@ -83,7 +83,7 @@ const Appointments = () => {
   const upcomingAppointments = appointments.filter(appointment => !appointment.isPast);
   const pastAppointments = appointments.filter(appointment => appointment.isPast);
   
-  const renderAppointmentCard = appointment => <Card key={appointment.id} className="p-6">
+  const renderAppointmentCard = (appointment, isPast = false) => <Card key={appointment.id} className="p-6">
       <div className="space-y-4">
         <div className="space-y-1">
           <h3 className="font-bold text-xl">{appointment.date}</h3>
@@ -99,7 +99,7 @@ const Appointments = () => {
         <div className="space-y-1">
           <h4 className="font-semibold text-base">Key contact</h4>
           <p>{appointment.contact}</p>
-          {appointment.type === "General" && appointment.contact === "Julie Myers" && (
+          {!isPast && appointment.type === "General" && appointment.contact === "Julie Myers" && (
             <Link to="/messages/new" className="text-primary hover:underline">
               Message
             </Link>
@@ -118,10 +118,12 @@ const Appointments = () => {
             <MapPin className="h-3 w-3 mr-1" />
             View on map
           </Button>
-          <Button variant="outline" size="sm" className="text-xs flex items-center">
-            <Calendar className="h-3 w-3 mr-1" />
-            Add to calendar
-          </Button>
+          {!isPast && (
+            <Button variant="outline" size="sm" className="text-xs flex items-center">
+              <Calendar className="h-3 w-3 mr-1" />
+              Add to calendar
+            </Button>
+          )}
         </div>
       </div>
     </Card>;
@@ -159,14 +161,14 @@ const Appointments = () => {
         {upcomingAppointments.length > 0 && <div className="space-y-4">
             <h2 className="text-2xl font-semibold">Upcoming appointments</h2>
             <div className="space-y-6">
-              {upcomingAppointments.map(renderAppointmentCard)}
+              {upcomingAppointments.map(appointment => renderAppointmentCard(appointment, false))}
             </div>
           </div>}
         
         {pastAppointments.length > 0 && <div className="space-y-4 mt-8">
             <h2 className="text-2xl font-semibold">Past appointments</h2>
             <div className="space-y-6">
-              {pastAppointments.map(renderAppointmentCard)}
+              {pastAppointments.map(appointment => renderAppointmentCard(appointment, true))}
             </div>
           </div>}
 
