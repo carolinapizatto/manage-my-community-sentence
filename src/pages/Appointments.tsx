@@ -1,4 +1,5 @@
-import { Calendar, ChevronLeft, Info, MapPin, MessageSquare } from "lucide-react";
+
+import { Calendar, ChevronLeft, Info, MapPin } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -99,8 +100,7 @@ const Appointments = () => {
           <h4 className="font-semibold text-base">Key contact</h4>
           <p>{appointment.contact}</p>
           {appointment.type === "General" && appointment.contact === "Julie Myers" && (
-            <Link to="/messages/new" className="text-primary hover:underline inline-flex items-center">
-              <MessageSquare className="h-3 w-3 mr-1" />
+            <Link to="/messages/new" className="text-primary hover:underline">
               Message
             </Link>
           )}
