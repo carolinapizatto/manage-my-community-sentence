@@ -1,3 +1,4 @@
+
 import { ChevronLeft } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
@@ -43,8 +44,8 @@ const YourDetails = () => {
                     <p>Carolina Pizatto Girardi</p>
                   </div>
                   <div>
-                    <p className="text-sm text-muted">Unpaid work hours required to complete</p>
-                    <p>100 hours</p>
+                    <p className="text-sm text-muted">Requirements</p>
+                    <p>Unpaid work - 100 hours</p>
                   </div>
                   <div>
                     <p className="text-sm text-muted">Address</p>
