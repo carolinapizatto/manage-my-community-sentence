@@ -17,7 +17,7 @@ const ViewAppointment = () => {
   };
 
   const handleCancelBooking = () => {
-    navigate("/cancel-appointment", { state: { appointment } });
+    navigate("/cancel-appointment", { state: { appointment, step: "reason" } });
   };
 
   return (
