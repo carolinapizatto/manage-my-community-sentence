@@ -26,6 +26,7 @@ import StaffBook from "./pages/Staff/StaffBook";
 import NotFound from "./pages/NotFound";
 import StaffBookingConfirmation from "./pages/BookingFlow/StaffBookingConfirmation";
 import StaffCheckAnswers from "./pages/Staff/StaffCheckAnswers";
+import CancelAppointment from "./pages/CancelAppointment";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/index-previous-attendance" element={<IndexPreviousAttendance />} />
           <Route path="/your-details" element={<YourDetails />} />
           <Route path="/view-appointment" element={<ViewAppointment />} />
+          <Route path="/cancel-appointment" element={<CancelAppointment />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/messages/new" element={<MessageDetail />} />
           <Route path="/messages/:threadId" element={<MessageDetail />} />

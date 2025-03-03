@@ -3,9 +3,23 @@ import { ChevronLeft } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ViewAppointment = () => {
+  const navigate = useNavigate();
+  
+  const appointment = {
+    id: 1,
+    name: "Community Garden Maintenance",
+    location: "123 Garden Street, London SE1 7TH",
+    date: "Friday 15 March 2024",
+    time: "09:00"
+  };
+
+  const handleCancelBooking = () => {
+    navigate("/cancel-appointment", { state: { appointment } });
+  };
+
   return (
     <div className="min-h-screen bg-[#f3f2f1]">
       <Header />
@@ -28,19 +42,19 @@ const ViewAppointment = () => {
               <div className="grid grid-cols-3 gap-4 py-4 border-b">
                 <h3 className="font-semibold">Placement</h3>
                 <div className="col-span-2">
-                  <p>Community Garden Maintenance</p>
-                  <p className="text-muted">123 Garden Street, London SE1 7TH</p>
+                  <p>{appointment.name}</p>
+                  <p className="text-muted">{appointment.location}</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-4 py-4 border-b">
                 <h3 className="font-semibold">Date</h3>
-                <p className="col-span-2">Friday 15 March 2024</p>
+                <p className="col-span-2">{appointment.date}</p>
               </div>
 
               <div className="grid grid-cols-3 gap-4 py-4 border-b">
                 <h3 className="font-semibold">Time</h3>
-                <p className="col-span-2">09:00</p>
+                <p className="col-span-2">{appointment.time}</p>
               </div>
             </div>
 
@@ -48,7 +62,11 @@ const ViewAppointment = () => {
               <Button variant="outline" className="w-full md:w-auto">
                 Edit booking
               </Button>
-              <Button variant="outline" className="w-full md:w-auto">
+              <Button 
+                variant="outline" 
+                className="w-full md:w-auto"
+                onClick={handleCancelBooking}
+              >
                 Cancel booking
               </Button>
             </div>
