@@ -1,114 +1,110 @@
-
-import { Calendar, ChevronLeft, Info, MapPin, MessageCircle } from "lucide-react";
+import { Calendar, ChevronLeft, Info, MapPin } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-
 const Appointments = () => {
-  const [appointments] = useState([
-    {
-      id: 1,
-      date: "Thursday 27 Feb 2025",
-      time: "10:00am - 11:00am",
-      title: "Community Garden Maintenance",
-      location: "123 Garden Street, London SE1 7TH",
-      contact: "Karen Smith",
-      description: "Group session focused on weeding, planting seasonal vegetables, and general garden maintenance. Bring appropriate clothing for outdoor work, tools will be provided. Break times will be scheduled during the session.",
-      isPast: false
-    },
-    {
-      id: 2,
-      date: "Thursday 27 Feb 2025",
-      time: "2:00pm - 2:30pm",
-      title: "Probation appointment",
-      location: "National Probation Service, Redfern Building, 30 Hanover Street, Manchester M4 4AH",
-      contact: "Julie Myers",
-      description: "Regular probation check-in to discuss progress, any issues faced, and upcoming milestones. Make sure to bring any requested documents or updates for the probation officer.",
-      isPast: false
-    },
-    {
-      id: 3,
-      date: "Thursday 27 Feb 2025",
-      time: "4:00pm - 4:30pm",
-      title: "Community Garden Maintenance",
-      location: "123 Garden Street, London SE1 7TH",
-      contact: "Jack Kennedy",
-      description: "Afternoon session focused on pathway clearing, composting, and preparing garden beds for spring planting. Please wear sturdy footwear and weather-appropriate clothing. All equipment will be provided on site.",
-      isPast: false
-    },
-    {
-      id: 4,
-      date: "Friday 28 Feb 2025",
-      time: "10:00am - 11:00am",
-      title: "Probation appointment",
-      location: "National Probation Service, Redfern Building, 30 Hanover Street, Manchester M4 4AH",
-      contact: "Julie Myers",
-      description: "Follow-up appointment to review progress on previously set goals and discuss any new developments or challenges since the last meeting.",
-      isPast: false
-    },
-    {
-      id: 5,
-      date: "Thursday 20 Mar 2025",
-      time: "10:00am - 11:00am",
-      title: "Probation appointment",
-      location: "National Probation Service, Redfern Building, 30 Hanover Street, Manchester M4 4AH",
-      contact: "Julie Myers",
-      description: "Monthly probation meeting to review progress and discuss the next steps in rehabilitation. Consider if any assistance is needed from the probation team regarding employment or housing.",
-      isPast: false
-    },
-    {
-      id: 6,
-      date: "Thursday 20 Jan 2025",
-      time: "10:00am - 11:00am",
-      title: "Community Garden Maintenance",
-      location: "123 Garden Street, London SE1 7TH",
-      contact: "Karen Smith",
-      description: "Past garden maintenance session.",
-      isPast: true
-    },
-    {
-      id: 7,
-      date: "Thursday 15 Jan 2025",
-      time: "2:00pm - 2:30pm",
-      title: "Probation appointment",
-      location: "National Probation Service, Redfern Building, 30 Hanover Street, Manchester M4 4AH",
-      contact: "Julie Myers",
-      description: "Past probation check-in.",
-      isPast: true
-    }
-  ]);
-
+  const [appointments] = useState([{
+    id: 1,
+    date: "Thursday 27 Feb 2025",
+    time: "10:00am - 11:00am",
+    title: "Community Garden Maintenance",
+    type: "Unpaid Work",
+    location: "123 Garden Street, London SE1 7TH",
+    contact: "Karen Smith",
+    description: "Group session focused on weeding, planting seasonal vegetables, and general garden maintenance. Bring appropriate clothing for outdoor work, tools will be provided. Break times will be scheduled during the session.",
+    isPast: false
+  }, {
+    id: 2,
+    date: "Thursday 27 Feb 2025",
+    time: "2:00pm - 2:30pm",
+    title: "Probation appointment",
+    type: "General",
+    location: "National Probation Service, Redfern Building, 30 Hanover Street, Manchester M4 4AH",
+    contact: "Julie Myers",
+    description: "Regular probation check-in to discuss progress, any issues faced, and upcoming milestones. Make sure to bring any requested documents or updates for the probation officer.",
+    isPast: false
+  }, {
+    id: 3,
+    date: "Thursday 27 Feb 2025",
+    time: "4:00pm - 4:30pm",
+    title: "Community Garden Maintenance",
+    type: "Unpaid Work",
+    location: "123 Garden Street, London SE1 7TH",
+    contact: "Jack Kennedy",
+    description: "Afternoon session focused on pathway clearing, composting, and preparing garden beds for spring planting. Please wear sturdy footwear and weather-appropriate clothing. All equipment will be provided on site.",
+    isPast: false
+  }, {
+    id: 4,
+    date: "Friday 28 Feb 2025",
+    time: "10:00am - 11:00am",
+    title: "Probation appointment",
+    type: "General",
+    location: "National Probation Service, Redfern Building, 30 Hanover Street, Manchester M4 4AH",
+    contact: "Julie Myers",
+    description: "Follow-up appointment to review progress on previously set goals and discuss any new developments or challenges since the last meeting.",
+    isPast: false
+  }, {
+    id: 5,
+    date: "Thursday 20 Mar 2025",
+    time: "10:00am - 11:00am",
+    title: "Probation appointment",
+    type: "General",
+    location: "National Probation Service, Redfern Building, 30 Hanover Street, Manchester M4 4AH",
+    contact: "Julie Myers",
+    description: "Monthly probation meeting to review progress and discuss the next steps in rehabilitation. Consider if any assistance is needed from the probation team regarding employment or housing.",
+    isPast: false
+  }, {
+    id: 6,
+    date: "Thursday 20 Jan 2025",
+    time: "10:00am - 11:00am",
+    title: "Community Garden Maintenance",
+    type: "Unpaid Work",
+    location: "123 Garden Street, London SE1 7TH",
+    contact: "Karen Smith",
+    description: "Past garden maintenance session.",
+    isPast: true
+  }, {
+    id: 7,
+    date: "Thursday 15 Jan 2025",
+    time: "2:00pm - 2:30pm",
+    title: "Probation appointment",
+    type: "General",
+    location: "National Probation Service, Redfern Building, 30 Hanover Street, Manchester M4 4AH",
+    contact: "Julie Myers",
+    description: "Past probation check-in.",
+    isPast: true
+  }]);
   const upcomingAppointments = appointments.filter(appointment => !appointment.isPast);
   const pastAppointments = appointments.filter(appointment => appointment.isPast);
-
-  const renderAppointmentCard = (appointment) => (
-    <Card key={appointment.id} className="p-6">
+  const renderAppointmentCard = appointment => <Card key={appointment.id} className="p-6">
       <div className="space-y-4">
-        <div className="bg-gray-100 p-3">
-          <h3 className="font-semibold">{appointment.date}</h3>
-          <p className="text-sm">{appointment.time}</p>
+        {/* Date and Time Section */}
+        <div className="space-y-1">
+          <h3 className="font-bold text-xl">{appointment.date}</h3>
+          <p className="font-bold text-xl">{appointment.time.split(' - ')[0]}</p>
         </div>
         
-        <h3 className="text-lg font-semibold">{appointment.title}</h3>
-        <p className="text-sm text-muted">{appointment.location}</p>
-        
-        <div>
-          <p className="font-semibold text-sm">
-            Contact: <span className="font-normal">
-              {appointment.contact} {appointment.contact === "Julie Myers" && (
-                <Link to="/messages" className="text-primary hover:underline ml-1">
-                  Message
-                </Link>
-              )}
-            </span>
-          </p>
+        {/* Appointment Type Section */}
+        <div className="space-y-1">
+          <h4 className="font-semibold text-base">Appointment type</h4>
+          <p>{appointment.type}</p>
+          <p className="font-medium">{appointment.title}</p>
+          <p>{appointment.contact}</p>
         </div>
         
-        <p className="text-sm">{appointment.description}</p>
+        {/* Location Section */}
+        <div className="space-y-1">
+          <h4 className="font-semibold text-base">Location</h4>
+          <p className="whitespace-pre-line">{appointment.location}</p>
+        </div>
         
+        {/* Description (if needed) */}
+        <p className="text-sm text-muted pt-2">{appointment.description}</p>
+        
+        {/* Action Buttons */}
         <div className="flex flex-wrap gap-4 pt-2">
           <Button variant="outline" size="sm" className="text-xs flex items-center">
             <MapPin className="h-3 w-3 mr-1" />
@@ -118,17 +114,10 @@ const Appointments = () => {
             <Calendar className="h-3 w-3 mr-1" />
             Add to calendar
           </Button>
-          <Button variant="outline" size="sm" className="text-xs flex items-center">
-            <Info className="h-3 w-3 mr-1" />
-            What to expect (video)
-          </Button>
         </div>
       </div>
-    </Card>
-  );
-
-  return (
-    <div className="min-h-screen bg-[#f3f2f1]">
+    </Card>;
+  return <div className="min-h-screen bg-[#f3f2f1]">
       <Header />
       
       <main className="container mx-auto px-4 py-8 space-y-8">
@@ -158,40 +147,32 @@ const Appointments = () => {
           </div>
         </div>
 
-        {upcomingAppointments.length > 0 && (
-          <div className="space-y-4">
+        {upcomingAppointments.length > 0 && <div className="space-y-4">
             <h2 className="text-2xl font-semibold">Upcoming appointments</h2>
             <div className="space-y-6">
               {upcomingAppointments.map(renderAppointmentCard)}
             </div>
-          </div>
-        )}
+          </div>}
         
-        {pastAppointments.length > 0 && (
-          <div className="space-y-4 mt-8">
+        {pastAppointments.length > 0 && <div className="space-y-4 mt-8">
             <h2 className="text-2xl font-semibold">Past appointments</h2>
             <div className="space-y-6">
               {pastAppointments.map(renderAppointmentCard)}
             </div>
-          </div>
-        )}
+          </div>}
 
         <footer className="space-y-6 mt-12">
           <Separator />
           <div className="space-y-4">
             <div className="flex flex-wrap gap-4">
-              {['Accessibility statement', 'Privacy policy', 'Terms and conditions', 'Cookies'].map((text) => (
-                <a key={text} href="#" className="text-primary hover:underline text-sm">
+              {['Accessibility statement', 'Privacy policy', 'Terms and conditions', 'Cookies'].map(text => <a key={text} href="#" className="text-primary hover:underline text-sm">
                   {text}
-                </a>
-              ))}
+                </a>)}
             </div>
             <p className="text-xs text-muted">© Crown copyright</p>
           </div>
         </footer>
       </main>
-    </div>
-  );
+    </div>;
 };
-
 export default Appointments;
