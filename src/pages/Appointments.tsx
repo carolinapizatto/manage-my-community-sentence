@@ -5,6 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+
 const Appointments = () => {
   const [appointments] = useState([{
     id: 1,
@@ -77,43 +78,41 @@ const Appointments = () => {
     description: "Past probation check-in.",
     isPast: true
   }]);
+  
   const upcomingAppointments = appointments.filter(appointment => !appointment.isPast);
   const pastAppointments = appointments.filter(appointment => appointment.isPast);
+  
   const renderAppointmentCard = appointment => <Card key={appointment.id} className="p-6">
       <div className="space-y-4">
-        {/* Date and Time Section */}
         <div className="space-y-1">
           <h3 className="font-bold text-xl">{appointment.date}</h3>
           <p className="font-bold text-xl">{appointment.time.split(' - ')[0]}</p>
         </div>
         
-        {/* Appointment Type Section */}
         <div className="space-y-1">
           <h4 className="font-semibold text-base">Appointment type</h4>
           <p>{appointment.type}</p>
           <p className="font-medium">{appointment.title}</p>
-          <div className="flex items-center gap-2 py-0">
-            <p className="font-semibold text-base text-slate-950">Key contact</p>
-            <p>{appointment.contact}</p>
-            {appointment.type === "General" && appointment.contact === "Julie Myers" && <Link to="/messages/new">
-                <Button variant="outline" size="sm" className="text-xs flex items-center ml-2">
-                  <MessageSquare className="h-3 w-3 mr-1" />
-                  Message
-                </Button>
-              </Link>}
-          </div>
         </div>
         
-        {/* Location Section */}
+        <div className="space-y-1">
+          <h4 className="font-semibold text-base">Key contact</h4>
+          <p>{appointment.contact}</p>
+          {appointment.type === "General" && appointment.contact === "Julie Myers" && (
+            <Link to="/messages/new" className="text-primary hover:underline inline-flex items-center">
+              <MessageSquare className="h-3 w-3 mr-1" />
+              Message
+            </Link>
+          )}
+        </div>
+        
         <div className="space-y-1">
           <h4 className="font-semibold text-base">Location</h4>
           <p className="whitespace-pre-line">{appointment.location}</p>
         </div>
         
-        {/* Description (if needed) */}
         <p className="text-sm text-muted pt-2">{appointment.description}</p>
         
-        {/* Action Buttons */}
         <div className="flex flex-wrap gap-4 pt-2">
           <Button variant="outline" size="sm" className="text-xs flex items-center">
             <MapPin className="h-3 w-3 mr-1" />
@@ -126,6 +125,7 @@ const Appointments = () => {
         </div>
       </div>
     </Card>;
+  
   return <div className="min-h-screen bg-[#f3f2f1]">
       <Header />
       
@@ -184,4 +184,5 @@ const Appointments = () => {
       </main>
     </div>;
 };
+
 export default Appointments;
