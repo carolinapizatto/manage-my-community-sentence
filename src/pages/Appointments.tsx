@@ -1,4 +1,3 @@
-
 import { Calendar, ChevronLeft, Info, MapPin, MessageCircle } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
@@ -15,7 +14,7 @@ const Appointments = () => {
       title: "Community Garden Maintenance",
       location: "123 Garden Street, London SE1 7TH",
       contact: "Karen Smith",
-      description: "Initial meeting with your assigned work coach. The work coach will be able to guide and support you and, where appropriate, help you into work by providing personalised advice using their knowledge of local work opportunities."
+      description: "Group session focused on weeding, planting seasonal vegetables, and general garden maintenance. Bring appropriate clothing for outdoor work, tools will be provided. Break times will be scheduled during the session."
     },
     {
       id: 2,
@@ -33,7 +32,7 @@ const Appointments = () => {
       title: "Community Garden Maintenance",
       location: "123 Garden Street, London SE1 7TH",
       contact: "Jack Kennedy",
-      description: "Introductory session to help you overcome barriers to financial security, including low incomes, debt, disrupted access to benefits and insufficient income."
+      description: "Afternoon session focused on pathway clearing, composting, and preparing garden beds for spring planting. Please wear sturdy footwear and weather-appropriate clothing. All equipment will be provided on site."
     },
     {
       id: 4,
