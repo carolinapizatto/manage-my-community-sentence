@@ -24,18 +24,6 @@ const BookingConfirmation = () => {
 
           <Card className="p-6 space-y-6">
             <div className="space-y-4">
-              <h2 className="text-xl font-semibold">Your QR code</h2>
-              <p className="text-muted">Present this to your placement supervisor when you arrive</p>
-              <div className="flex justify-center p-6 border rounded-lg">
-                <img 
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEAAQMAAABmvDolAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB/0lEQVR4nO2ZQY6jMBBFP1GWXPoIcwSOxhE4CkfoI7FkmdH8ZVsYMJ1MNNJIK0T+eSnbZZtK4eVFRERERERERERERETk/8Kv0Z5fbRvZv7XCP2yHj7XN8IFl+LQZ8FuqYFgCK1C88FyK57PnVry1edxAtVUzbGpggwKHGf7kl4zgkS0MPr6B6rENNqigatwNaP59AzXDJ1Z4b4UNKrgfqxWUMAIPeGEDClqhBAYa8EJmb2zwm38VvLfE4AdSQa4hdHE5qaCJpxaO6zN7UsFQgwu7xr2CGkYI4IGU4NlvLNayBRfWOJt4pAZ/aQtujPEe/MhWQ3Bj9QruLZTgxuqFNY4a3Fi9sMZRgxurF9Y4anBj9cIaRw1urF5Y46jBjdULaxw1uLF6YY2jBjdWL6xx1ODG6oU1jhrcWL2wxlGDG6sX1jhqcGP1whpHDW6sXljjqMGN1QtrHDW4sXphjaMGN1YvrHHU4MbqhTWOGtxYvbDGUYMbqxfWOGpwY/XCGkcNbqxeWOOowY3VC2scNbixemGNowY3Vi+scdTgxuqFNY4a3Fi9sMZRgxurF9Y4anBj9cIaRw1urF5Y46jBjdULaxw1uLF6YY2jBjdWL6xx1ODG6oU1jhrcWL2wxlGDG6sX1jhqcGP1whpHDW6sXljjqMGN1QtrHCIiIiIiIiIiIiIiIiLyR/kHXhom9BfL4MwAAAAASUVORK5CYII="
-                  alt="QR Code"
-                  className="w-48 h-48"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-4">
               <h2 className="text-xl font-semibold">What to know before your placement</h2>
               <div className="space-y-2">
                 <h3 className="font-medium">What to wear</h3>

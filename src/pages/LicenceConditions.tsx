@@ -117,15 +117,12 @@ const LicenceConditions = () => {
         <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mt-6">
           <h4 className="font-semibold mb-2">Need help understanding your conditions?</h4>
           <p className="text-sm mb-2">Contact your probation practitioner for guidance on any conditions you're unsure about.</p>
-          <a href="#" className="text-primary hover:underline text-sm">Contact details</a>
+          <Link to="/messages" className="text-primary hover:underline text-sm">Message</Link>
         </div>
 
         <footer className="space-y-6 mt-12">
           <div className="space-y-2">
             <p className="text-sm">The Supervising Officer is the Community Offender Manager.</p>
-            <a href="#" className="text-primary hover:underline text-sm block">
-              How to contact us
-            </a>
           </div>
 
           <Separator />
