@@ -1,3 +1,4 @@
+
 import { Calendar, ChevronLeft, Info, MapPin } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
@@ -35,7 +36,7 @@ const Appointments = () => {
     type: "Unpaid Work",
     location: "123 Garden Street, London SE1 7TH",
     contact: "Karen Smith",
-    description: "Past garden maintenance session.",
+    description: "",
     isPast: true
   }, {
     id: 7,
@@ -45,7 +46,7 @@ const Appointments = () => {
     type: "General",
     location: "National Probation Service, Redfern Building, 30 Hanover Street, Manchester M4 4AH",
     contact: "Julie Myers",
-    description: "Past probation check-in.",
+    description: "",
     isPast: true
   }]);
   
@@ -80,7 +81,9 @@ const Appointments = () => {
           <p className="whitespace-pre-line">{appointment.location}</p>
         </div>
         
-        <p className="text-sm text-muted pt-2">{appointment.description}</p>
+        {appointment.description && (
+          <p className="text-sm text-muted pt-2">{appointment.description}</p>
+        )}
         
         <div className="flex flex-wrap gap-4 pt-2">
           <Button variant="outline" size="sm" className="text-xs flex items-center">
