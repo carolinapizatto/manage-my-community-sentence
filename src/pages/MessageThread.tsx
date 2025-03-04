@@ -153,34 +153,41 @@ const MessageThread = () => {
         </div>
 
         <div className="space-y-6">
-          {/* Message thread */}
+          {/* Message thread with speech bubbles */}
           <div className="space-y-6">
             {threadMessages.map((message) => (
-              <Card 
+              <div 
                 key={message.id} 
-                className={`p-6 ${message.sender === "practitioner" ? "bg-blue-50 border-blue-200" : "bg-green-50 border-green-200"}`}
+                className={`flex ${message.sender === "practitioner" ? "justify-start" : "justify-end"}`}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-primary mb-2">{message.subject}</h3>
-                    <p className="text-sm text-muted">
-                      {message.sender === "practitioner" ? "From: Your probation practitioner" : "From: You"} • {message.date}
-                    </p>
+                <div 
+                  className={`max-w-[80%] rounded-lg p-4 ${
+                    message.sender === "practitioner" 
+                      ? "bg-[#F1F0FB] text-secondary border-l-4 border-[#1d70b8]" 
+                      : "bg-[#E5DEFF] text-secondary border-l-4 border-[#6E59A5]"
+                  }`}
+                >
+                  <div className="mb-2">
+                    <span className="font-semibold">
+                      {message.sender === "practitioner" ? "Your probation practitioner" : "You"}
+                    </span>
+                    <span className="text-sm text-muted ml-2">{message.date}</span>
+                    {message.sender === "practitioner" && !message.read && (
+                      <Badge variant="destructive" className="ml-2">New</Badge>
+                    )}
                   </div>
-                  {message.sender === "practitioner" && !message.read && (
-                    <Badge variant="destructive">New</Badge>
+                  <h3 className="text-lg font-semibold mb-2">{message.subject}</h3>
+                  <p className="mb-3">{message.content}</p>
+                  
+                  {message.hasAttachment && message.attachmentName && (
+                    <div className="flex items-center gap-2 mt-3 p-2 bg-white rounded">
+                      <Paperclip className="h-4 w-4" />
+                      <span className="text-sm">{message.attachmentName}</span>
+                      <Button variant="ghost" size="sm" className="ml-auto">Download</Button>
+                    </div>
                   )}
                 </div>
-                <p className="mb-4">{message.content}</p>
-                
-                {message.hasAttachment && message.attachmentName && (
-                  <div className="flex items-center gap-2 mt-4 p-2 bg-white rounded">
-                    <Paperclip className="h-4 w-4" />
-                    <span className="text-sm">{message.attachmentName}</span>
-                    <Button variant="ghost" size="sm" className="ml-auto">Download</Button>
-                  </div>
-                )}
-              </Card>
+              </div>
             ))}
           </div>
           

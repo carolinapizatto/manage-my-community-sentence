@@ -1,4 +1,3 @@
-
 import { ChevronLeft, Mail, MailOpen, Paperclip, Plus } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
@@ -7,7 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { toast } from "@/hooks/use-toast";
 
 interface Message {
   id: number;
@@ -63,16 +61,6 @@ const Messages = () => {
       thread: 3
     }
   ]);
-
-  const markAsRead = (id: number) => {
-    setMessages(messages.map(message => 
-      message.id === id ? { ...message, read: true } : message
-    ));
-    toast({
-      title: "Message marked as read",
-      description: "This message has been marked as read.",
-    });
-  };
 
   const messageThreads = messages.reduce((acc, message) => {
     const threadId = message.thread || message.id;
@@ -148,19 +136,6 @@ const Messages = () => {
                     )}
                     
                     <div className="flex gap-3 mt-2">
-                      {hasUnread && (
-                        <Button 
-                          variant="outline" 
-                          size="sm"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            markAsRead(thread.find(m => !m.read)?.id || 0);
-                          }}
-                        >
-                          <MailOpen className="mr-1 h-4 w-4" />
-                          Mark as read
-                        </Button>
-                      )}
                       <Button 
                         variant="default" 
                         size="sm"
