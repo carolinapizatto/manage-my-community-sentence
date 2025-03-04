@@ -1,4 +1,4 @@
-import { ChevronLeft, Paperclip } from "lucide-react";
+import { ChevronLeft, Paperclip, CalendarX } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -17,12 +17,23 @@ interface Message {
   hasAttachment?: boolean;
   attachmentName?: string;
   thread?: number;
+  messageType?: "missed-appointment";
 }
 
 const Messages = () => {
   const navigate = useNavigate();
   
   const [messages, setMessages] = useState<Message[]>([
+    {
+      id: 5,
+      subject: "Missed appointment",
+      content: "You failed to attend your scheduled probation appointment on 10 August 2023. This is a breach of your supervision requirements. Please contact your probation practitioner as soon as possible to discuss this matter.",
+      date: "11 August 2023",
+      read: false,
+      sender: "practitioner",
+      messageType: "missed-appointment",
+      thread: 4
+    },
     {
       id: 1,
       subject: "Appointment reminder",
@@ -108,23 +119,27 @@ const Messages = () => {
             const hasUnread = thread.some(m => !m.read && m.sender === "practitioner");
             const threadId = latestMessage.thread || latestMessage.id;
             
-            // Get the original thread subject (first message in the thread)
             const originalSubject = thread[0].subject;
             
             return (
               <Card 
                 key={threadId} 
-                className="p-6 hover:shadow transition-shadow cursor-pointer"
+                className={`p-6 hover:shadow transition-shadow cursor-pointer ${latestMessage.messageType === "missed-appointment" ? "border-l-4 border-red-500" : ""}`}
                 onClick={() => navigate(`/messages/thread/${threadId}`)}
               >
                 <div className="flex justify-between items-start">
                   <div className="flex-grow">
                     <div className="flex items-center gap-2">
+                      {latestMessage.messageType === "missed-appointment" && (
+                        <CalendarX className="h-5 w-5 text-red-500" />
+                      )}
                       <h3 className="text-lg font-semibold text-primary">{originalSubject}</h3>
                       {hasUnread && <Badge variant="destructive">New</Badge>}
                     </div>
                     <p className="text-sm text-muted mt-1">{latestMessage.date}</p>
-                    <p className="mt-3 mb-4">{latestMessage.content}</p>
+                    <p className={`mt-3 mb-4 ${latestMessage.messageType === "missed-appointment" ? "text-red-700 font-medium" : ""}`}>
+                      {latestMessage.content}
+                    </p>
                     
                     {thread.some(m => m.hasAttachment) && (
                       <div className="flex items-center gap-2 text-sm text-muted mb-4">
