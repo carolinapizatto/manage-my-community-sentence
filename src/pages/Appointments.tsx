@@ -1,4 +1,3 @@
-
 import { Calendar, ChevronLeft, Info, MapPin } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
@@ -27,36 +26,6 @@ const Appointments = () => {
     location: "National Probation Service, Redfern Building, 30 Hanover Street, Manchester M4 4AH",
     contact: "Julie Myers",
     description: "Regular probation check-in to discuss progress, any issues faced, and upcoming milestones. Make sure to bring any requested documents or updates for the probation officer.",
-    isPast: false
-  }, {
-    id: 3,
-    date: "Thursday 27 Feb 2025",
-    time: "4:00pm - 4:30pm",
-    title: "Community Garden Maintenance",
-    type: "Unpaid Work",
-    location: "123 Garden Street, London SE1 7TH",
-    contact: "Jack Kennedy",
-    description: "Afternoon session focused on pathway clearing, composting, and preparing garden beds for spring planting. Please wear sturdy footwear and weather-appropriate clothing. All equipment will be provided on site.",
-    isPast: false
-  }, {
-    id: 4,
-    date: "Friday 28 Feb 2025",
-    time: "10:00am - 11:00am",
-    title: "Probation appointment",
-    type: "General",
-    location: "National Probation Service, Redfern Building, 30 Hanover Street, Manchester M4 4AH",
-    contact: "Julie Myers",
-    description: "Follow-up appointment to review progress on previously set goals and discuss any new developments or challenges since the last meeting.",
-    isPast: false
-  }, {
-    id: 5,
-    date: "Thursday 20 Mar 2025",
-    time: "10:00am - 11:00am",
-    title: "Probation appointment",
-    type: "General",
-    location: "National Probation Service, Redfern Building, 30 Hanover Street, Manchester M4 4AH",
-    contact: "Julie Myers",
-    description: "Monthly probation meeting to review progress and discuss the next steps in rehabilitation. Consider if any assistance is needed from the probation team regarding employment or housing.",
     isPast: false
   }, {
     id: 6,
