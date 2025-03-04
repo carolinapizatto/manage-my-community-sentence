@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -11,43 +11,26 @@ import { Label } from "@/components/ui/label";
 import { ChevronLeft, Paperclip, Send } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
-// Define message type
-interface Message {
-  id: number;
-  subject: string;
-  content: string;
-  date: string;
-  read: boolean;
-  sender: "practitioner" | "user";
-  hasAttachment?: boolean;
-  attachmentName?: string;
-  thread?: number;
-}
-
 const MessageDetail = () => {
-  const { threadId } = useParams();
   const navigate = useNavigate();
-  const [replyText, setReplyText] = useState("");
+  const [subject, setSubject] = useState("");
+  const [messageText, setMessageText] = useState("");
   const [attachment, setAttachment] = useState<File | null>(null);
   
-  // Sample messages data for this thread
-  const thread: Message[] = [
-    {
-      id: 2,
-      subject: "Message from your probation practitioner",
-      content: "Please contact me as soon as possible to discuss your progress.",
-      date: "15 July 2023",
-      read: true,
-      sender: "practitioner",
-      thread: 2
-    }
-  ];
-
   // Mock function to handle submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (replyText.trim() === "") {
+    if (subject.trim() === "") {
+      toast({
+        title: "Error",
+        description: "Please enter a subject",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    if (messageText.trim() === "") {
       toast({
         title: "Error",
         description: "Please enter a message",
@@ -57,12 +40,11 @@ const MessageDetail = () => {
     }
     
     // In a real app, we would send the message to the backend
-    console.log("Submitting reply:", replyText);
-    console.log("Attachment:", attachment);
+    console.log("Submitting message:", { subject, messageText, attachment });
     
     toast({
       title: "Message sent",
-      description: "Your reply has been sent successfully.",
+      description: "Your message has been sent successfully.",
     });
     
     // Navigate back to messages
@@ -82,36 +64,31 @@ const MessageDetail = () => {
         </div>
 
         <div>
-          <h1 className="text-3xl font-bold text-secondary mb-2">Reply to message</h1>
-          <p className="text-muted mb-6">Send a response to your probation practitioner</p>
+          <h1 className="text-3xl font-bold text-secondary mb-2">Write new message</h1>
+          <p className="text-muted mb-6">Send a message to your probation practitioner</p>
         </div>
 
         <div className="space-y-6">
-          {/* Original message */}
-          <Card className="p-6 bg-blue-50 border-blue-200">
-            <h3 className="text-lg font-semibold text-primary mb-2">{thread[0].subject}</h3>
-            <p className="text-sm text-muted mb-2">{thread[0].date}</p>
-            <p>{thread[0].content}</p>
-            
-            {thread[0].hasAttachment && thread[0].attachmentName && (
-              <div className="flex items-center gap-2 mt-4 p-2 bg-white rounded">
-                <Paperclip className="h-4 w-4" />
-                <span className="text-sm">{thread[0].attachmentName}</span>
-                <Button variant="ghost" size="sm" className="ml-auto">Download</Button>
-              </div>
-            )}
-          </Card>
-          
-          {/* Reply form */}
+          {/* Message form */}
           <Card className="p-6">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="reply">Your reply</Label>
+                <Label htmlFor="subject">Subject</Label>
+                <Input
+                  id="subject"
+                  placeholder="Enter a subject for your message"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="message">Your message</Label>
                 <Textarea
-                  id="reply"
+                  id="message"
                   placeholder="Type your message here..."
-                  value={replyText}
-                  onChange={(e) => setReplyText(e.target.value)}
+                  value={messageText}
+                  onChange={(e) => setMessageText(e.target.value)}
                   className="min-h-[150px]"
                 />
               </div>
@@ -144,7 +121,7 @@ const MessageDetail = () => {
                 </Button>
                 <Button type="submit">
                   <Send className="mr-2 h-4 w-4" />
-                  Send reply
+                  Send message
                 </Button>
               </div>
             </form>

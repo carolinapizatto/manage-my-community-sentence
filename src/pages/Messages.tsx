@@ -1,4 +1,5 @@
-import { ChevronLeft, Mail, MailOpen, Paperclip, Reply, Plus } from "lucide-react";
+
+import { ChevronLeft, Mail, MailOpen, Paperclip, Plus } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -118,11 +119,13 @@ const Messages = () => {
           {sortedThreads.map((thread) => {
             const latestMessage = thread[thread.length - 1];
             const hasUnread = thread.some(m => !m.read && m.sender === "practitioner");
+            const threadId = latestMessage.thread || latestMessage.id;
             
             return (
               <Card 
-                key={latestMessage.thread || latestMessage.id} 
-                className="p-6 hover:shadow transition-shadow"
+                key={threadId} 
+                className="p-6 hover:shadow transition-shadow cursor-pointer"
+                onClick={() => navigate(`/messages/thread/${threadId}`)}
               >
                 <div className="flex justify-between items-start">
                   <div className="flex-grow">
@@ -149,7 +152,10 @@ const Messages = () => {
                         <Button 
                           variant="outline" 
                           size="sm"
-                          onClick={() => markAsRead(thread.find(m => !m.read)?.id || 0)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            markAsRead(thread.find(m => !m.read)?.id || 0);
+                          }}
                         >
                           <MailOpen className="mr-1 h-4 w-4" />
                           Mark as read
@@ -158,10 +164,12 @@ const Messages = () => {
                       <Button 
                         variant="default" 
                         size="sm"
-                        onClick={() => navigate(`/messages/${latestMessage.thread || latestMessage.id}`)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/messages/thread/${threadId}`);
+                        }}
                       >
-                        <Reply className="mr-1 h-4 w-4" />
-                        Reply
+                        View thread
                       </Button>
                     </div>
                   </div>
