@@ -1,5 +1,4 @@
-
-import { ChevronLeft, Paperclip, Plus } from "lucide-react";
+import { ChevronLeft, Paperclip } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -99,7 +98,6 @@ const Messages = () => {
             onClick={() => navigate("/messages/new")}
             className="bg-primary text-white"
           >
-            <Plus className="mr-2 h-4 w-4" />
             Create new message
           </Button>
         </div>
