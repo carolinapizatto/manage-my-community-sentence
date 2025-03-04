@@ -1,3 +1,4 @@
+
 import { ChevronLeft, FileText } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
@@ -67,8 +68,8 @@ const LicenceConditions = () => {
               <span>!</span>
             </div>
             <div>
-              <p className="font-bold mb-2">You must follow these conditions to avoid being recalled to court.</p>
-              <p><strong>If you don't follow these conditions you might be sent to prison.</strong> Ask your probation practitioner to explain anything you do not understand.</p>
+              <p className="font-bold mb-2"><strong>You must follow these conditions to avoid being recalled to court. If you don't follow these conditions you might be sent to prison.</strong></p>
+              <p>Ask your probation practitioner to explain anything you do not understand.</p>
             </div>
           </div>
         </div>
