@@ -1,3 +1,4 @@
+
 import { ChevronLeft, Paperclip, Plus } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
@@ -109,6 +110,9 @@ const Messages = () => {
             const hasUnread = thread.some(m => !m.read && m.sender === "practitioner");
             const threadId = latestMessage.thread || latestMessage.id;
             
+            // Get the original thread subject (first message in the thread)
+            const originalSubject = thread[0].subject;
+            
             return (
               <Card 
                 key={threadId} 
@@ -118,7 +122,7 @@ const Messages = () => {
                 <div className="flex justify-between items-start">
                   <div className="flex-grow">
                     <div className="flex items-center gap-2">
-                      <h3 className="text-lg font-semibold text-primary">{latestMessage.subject}</h3>
+                      <h3 className="text-lg font-semibold text-primary">{originalSubject}</h3>
                       {hasUnread && <Badge variant="destructive">New</Badge>}
                     </div>
                     <p className="text-sm text-muted mt-1">{latestMessage.date}</p>

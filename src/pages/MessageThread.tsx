@@ -79,6 +79,9 @@ const MessageThread = () => {
   
   const hasUnreadMessages = threadMessages.some(m => !m.read && m.sender === "practitioner");
   
+  // Get the thread subject from the first message in the thread
+  const threadSubject = threadMessages.length > 0 ? threadMessages[0].subject : "Message thread";
+  
   // Mock function to handle submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -121,8 +124,6 @@ const MessageThread = () => {
       title: "Message sent",
       description: "Your reply has been sent successfully.",
     });
-    
-    // We're not navigating back to messages anymore
   };
 
   if (threadMessages.length === 0) {
@@ -157,7 +158,7 @@ const MessageThread = () => {
         </div>
 
         <div>
-          <h1 className="text-3xl font-bold text-secondary mb-2">Message thread</h1>
+          <h1 className="text-3xl font-bold text-secondary mb-2">{threadSubject}</h1>
           <p className="text-muted mb-6">View your conversation with your probation practitioner</p>
         </div>
 
@@ -185,7 +186,6 @@ const MessageThread = () => {
                       <Badge variant="destructive" className="ml-2">New</Badge>
                     )}
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">{message.subject}</h3>
                   <p className="mb-3">{message.content}</p>
                   
                   {message.hasAttachment && message.attachmentName && (
