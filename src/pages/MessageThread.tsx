@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, Paperclip, Send, Mail, MailOpen } from "lucide-react";
+import { ChevronLeft, Paperclip, Send } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 // Define message type
@@ -33,7 +33,7 @@ const MessageThread = () => {
   const [showReplyForm, setShowReplyForm] = useState(false);
   
   // Sample messages data for this thread
-  const allMessages: Message[] = [
+  const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
       subject: "Appointment reminder",
@@ -45,7 +45,7 @@ const MessageThread = () => {
     },
     {
       id: 4,
-      subject: "Re: Appointment reminder",
+      subject: "Appointment reminder",
       content: "Thank you for the reminder. I'll be there on time.",
       date: "3 August 2023",
       read: true,
@@ -71,25 +71,14 @@ const MessageThread = () => {
       hasAttachment: false,
       thread: 3
     }
-  ];
+  ]);
   
-  const threadMessages = allMessages.filter(m => m.thread === Number(threadId)).sort((a, b) => 
+  const threadMessages = messages.filter(m => m.thread === Number(threadId)).sort((a, b) => 
     new Date(a.date).getTime() - new Date(b.date).getTime()
   );
   
   const hasUnreadMessages = threadMessages.some(m => !m.read && m.sender === "practitioner");
   
-  // Mock function to handle marking messages as read
-  const markAsRead = () => {
-    // In a real app, this would update the messages in the database
-    toast({
-      title: "Message marked as read",
-      description: "This message has been marked as read.",
-    });
-    
-    navigate("/messages");
-  };
-
   // Mock function to handle submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -103,17 +92,37 @@ const MessageThread = () => {
       return;
     }
     
-    // In a real app, we would send the message to the backend
-    console.log("Submitting reply:", replyText);
-    console.log("Attachment:", attachment);
+    // Create the new message
+    const newMessage: Message = {
+      id: Math.max(...messages.map(m => m.id)) + 1,
+      subject: threadMessages[0].subject, // Keep the original subject without 'Re:'
+      content: replyText,
+      date: new Date().toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      }),
+      read: true,
+      sender: "user",
+      thread: Number(threadId),
+      hasAttachment: attachment ? true : false,
+      attachmentName: attachment?.name
+    };
+    
+    // Add the new message to the thread
+    setMessages(prev => [...prev, newMessage]);
+    
+    // Reset the form
+    setReplyText("");
+    setAttachment(null);
+    setShowReplyForm(false);
     
     toast({
       title: "Message sent",
       description: "Your reply has been sent successfully.",
     });
     
-    // Navigate back to messages
-    navigate("/messages");
+    // We're not navigating back to messages anymore
   };
 
   if (threadMessages.length === 0) {
@@ -191,17 +200,8 @@ const MessageThread = () => {
             ))}
           </div>
           
-          {/* Action buttons */}
+          {/* Reply button */}
           <div className="flex gap-3">
-            {hasUnreadMessages && (
-              <Button 
-                variant="outline" 
-                onClick={markAsRead}
-              >
-                <MailOpen className="mr-2 h-4 w-4" />
-                Mark as read
-              </Button>
-            )}
             {!showReplyForm && (
               <Button 
                 onClick={() => setShowReplyForm(true)}

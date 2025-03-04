@@ -1,4 +1,4 @@
-import { ChevronLeft, Mail, MailOpen, Paperclip, Plus } from "lucide-react";
+import { ChevronLeft, Paperclip, Plus } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -118,10 +118,6 @@ const Messages = () => {
                 <div className="flex justify-between items-start">
                   <div className="flex-grow">
                     <div className="flex items-center gap-2">
-                      {hasUnread ? 
-                        <Mail className="h-5 w-5 text-primary shrink-0" /> : 
-                        <MailOpen className="h-5 w-5 text-muted shrink-0" />
-                      }
                       <h3 className="text-lg font-semibold text-primary">{latestMessage.subject}</h3>
                       {hasUnread && <Badge variant="destructive">New</Badge>}
                     </div>
@@ -136,16 +132,13 @@ const Messages = () => {
                     )}
                     
                     <div className="flex gap-3 mt-2">
-                      <Button 
-                        variant="default" 
-                        size="sm"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          navigate(`/messages/thread/${threadId}`);
-                        }}
+                      <Link 
+                        to={`/messages/thread/${threadId}`}
+                        className="text-primary hover:underline"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         View thread
-                      </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
