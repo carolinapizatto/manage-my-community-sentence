@@ -61,14 +61,6 @@ const Homepage = () => {
             </Card>
           </Link>
         </div>
-
-        <div className="mt-12">
-          <div className="border-t border-gray-200 pt-3">
-            <Link to="/pick-flow" className="text-sm text-muted hover:underline">
-              Switch views
-            </Link>
-          </div>
-        </div>
       </main>
     </div>
   );
