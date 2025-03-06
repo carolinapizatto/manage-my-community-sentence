@@ -87,7 +87,10 @@ const StaffViewPlacement = () => {
                     <div>{attendee.hoursRemaining} hours</div>
                     <div>{attendee.attendanceRate}</div>
                     <div className="flex space-x-4">
-                      <button className="text-[#1d70b8] hover:underline text-sm">
+                      <button 
+                        onClick={() => navigate('/staff-view-pop', { state: { attendee, placement } })} 
+                        className="text-[#1d70b8] hover:underline text-sm"
+                      >
                         View
                       </button>
                       <button className="text-[#1d70b8] hover:underline text-sm">

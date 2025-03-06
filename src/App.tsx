@@ -23,6 +23,8 @@ import Appointments from "./pages/Appointments";
 import AppointmentType from "./pages/AppointmentType";
 import StaffSearch from "./pages/Staff/StaffSearch";
 import StaffViewPlacement from "./pages/Staff/StaffViewPlacement";
+import StaffViewPOP from "./pages/Staff/StaffViewPOP"; 
+import StaffCheckinConfirmation from "./pages/Staff/StaffCheckinConfirmation"; 
 import StaffBook from "./pages/Staff/StaffBook";
 import NotFound from "./pages/NotFound";
 import StaffBookingConfirmation from "./pages/BookingFlow/StaffBookingConfirmation";
@@ -63,6 +65,8 @@ const App = () => (
           <Route path="/appointment-type" element={<AppointmentType />} />
           <Route path="/staff-search" element={<StaffSearch />} />
           <Route path="/staff-view-placement" element={<StaffViewPlacement />} />
+          <Route path="/staff-view-pop" element={<StaffViewPOP />} />
+          <Route path="/staff-checkin-confirmation" element={<StaffCheckinConfirmation />} />
           <Route path="/staff-book" element={<StaffBook />} />
           <Route path="/staff-check-answers" element={<StaffCheckAnswers />} />
           <Route path="/staff-booking-confirmation" element={<StaffBookingConfirmation />} />
