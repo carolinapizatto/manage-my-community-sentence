@@ -1,11 +1,12 @@
 
-import { Calendar, ChevronLeft, Info, MapPin } from "lucide-react";
+import { Calendar, ChevronLeft, ExternalLink, Info, MapPin } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Alert } from "@/components/Alert";
 
 const Appointments = () => {
   const [appointments] = useState([{
@@ -96,6 +97,12 @@ const Appointments = () => {
               Add to calendar
             </Button>
           )}
+          {!isPast && (
+            <Link to={`/view-appointment`} className="text-primary hover:underline text-xs flex items-center">
+              <ExternalLink className="h-3 w-3 mr-1" />
+              View
+            </Link>
+          )}
         </div>
       </div>
     </Card>;
@@ -120,15 +127,9 @@ const Appointments = () => {
           </Link>
         </div>
 
-        <div className="bg-gray-100 p-4 border-l-4 border-gray-500 mb-6">
-          <div className="flex items-start gap-3">
-            <Info className="h-6 w-6 text-black" />
-            <div>
-              <p className="font-bold mb-2">Attending probation appointments is part of complying with your conditions.</p>
-              <p>If you have a problem attending an appointment, you need to tell your probation worker as soon as possible.</p>
-            </div>
-          </div>
-        </div>
+        <Alert title="Attending probation appointments is part of complying with your conditions." variant="warning">
+          <p>If you have a problem attending an appointment, you need to tell your probation worker as soon as possible.</p>
+        </Alert>
 
         {upcomingAppointments.length > 0 && <div className="space-y-4">
             <h2 className="text-2xl font-semibold">Upcoming appointments</h2>
