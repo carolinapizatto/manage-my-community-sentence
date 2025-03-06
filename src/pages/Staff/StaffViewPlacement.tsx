@@ -1,11 +1,12 @@
 
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ChevronLeft, AlertTriangle } from "lucide-react";
+import { ChevronLeft, AlertTriangle, ShieldAlert } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
 
 const StaffViewPlacement = () => {
   const navigate = useNavigate();
@@ -13,9 +14,27 @@ const StaffViewPlacement = () => {
   const { placement } = location.state || {};
 
   const [attendees] = useState([
-    { id: "P258053P", name: "John Smith", hoursRemaining: 45, attendanceRate: "85%" },
-    { id: "P258054P", name: "Sarah Johnson", hoursRemaining: 30, attendanceRate: "92%" },
-    { id: "P258055P", name: "Michael Brown", hoursRemaining: 60, attendanceRate: "78%" },
+    { 
+      id: "P258053P", 
+      name: "John Smith", 
+      hoursRemaining: 45, 
+      attendanceRate: "85%", 
+      risk: { level: "high", label: "HIGH ROSH", score: "9.0" } 
+    },
+    { 
+      id: "P258054P", 
+      name: "Sarah Johnson", 
+      hoursRemaining: 30, 
+      attendanceRate: "92%", 
+      risk: { level: "medium", label: "MEDIUM RSR", score: "5.3" } 
+    },
+    { 
+      id: "P258055P", 
+      name: "Michael Brown", 
+      hoursRemaining: 60, 
+      attendanceRate: "78%", 
+      risk: { level: "low", label: "LOW ROSH", score: "2.1" } 
+    },
     // ... more attendees
   ]);
 
@@ -72,20 +91,32 @@ const StaffViewPlacement = () => {
 
           <Card>
             <div className="rounded-md border">
-              <div className="grid grid-cols-6 gap-4 p-4 font-medium border-b">
+              <div className="grid grid-cols-7 gap-4 p-4 font-medium border-b">
                 <div>User ID</div>
                 <div className="col-span-2">Name</div>
                 <div>Hours remaining</div>
                 <div>Attendance rate</div>
+                <div>Risk</div>
                 <div>Actions</div>
               </div>
               <div className="divide-y">
                 {attendees.map((attendee) => (
-                  <div key={attendee.id} className="grid grid-cols-6 gap-4 p-4 items-center">
+                  <div key={attendee.id} className="grid grid-cols-7 gap-4 p-4 items-center">
                     <div className="text-sm">{attendee.id}</div>
                     <div className="col-span-2">{attendee.name}</div>
                     <div>{attendee.hoursRemaining} hours</div>
                     <div>{attendee.attendanceRate}</div>
+                    <div>
+                      {attendee.risk && (
+                        <Badge 
+                          variant={attendee.risk.level as "high" | "medium" | "low"} 
+                          className="flex items-center gap-1 font-medium"
+                        >
+                          <ShieldAlert className="h-3 w-3 mr-1" />
+                          {attendee.risk.label} {attendee.risk.score}
+                        </Badge>
+                      )}
+                    </div>
                     <div className="flex space-x-4">
                       <button 
                         onClick={() => navigate('/staff-view-pop', { state: { attendee, placement } })} 
