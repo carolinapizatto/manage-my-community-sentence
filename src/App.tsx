@@ -29,6 +29,7 @@ import StaffBookingConfirmation from "./pages/BookingFlow/StaffBookingConfirmati
 import StaffCheckAnswers from "./pages/Staff/StaffCheckAnswers";
 import CancelAppointment from "./pages/CancelAppointment";
 import PickFlow from "./pages/PickFlow";
+import Notification from "./pages/Notification";
 
 const queryClient = new QueryClient();
 
@@ -65,6 +66,7 @@ const App = () => (
           <Route path="/staff-book" element={<StaffBook />} />
           <Route path="/staff-check-answers" element={<StaffCheckAnswers />} />
           <Route path="/staff-booking-confirmation" element={<StaffBookingConfirmation />} />
+          <Route path="/notification" element={<Notification />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
