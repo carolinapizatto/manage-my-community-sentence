@@ -38,7 +38,7 @@ const YourProgress = () => {
             <div className="space-y-4">
               <p className="text-sm text-muted">No upcoming sessions</p>
               <Link to="/book-appointment">
-                <Button className="w-full" size="lg">
+                <Button className="w-full" size="lg" variant="secondary">
                   Find placements near you
                 </Button>
               </Link>
