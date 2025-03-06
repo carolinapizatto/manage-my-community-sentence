@@ -1,3 +1,4 @@
+
 import { ArrowRight } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
@@ -18,7 +19,7 @@ const Homepage = () => {
             <Card className="p-6 hover:shadow transition-shadow">
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-semibold text-[#1d70b8]">Your details</h3>
-                <ArrowRight className="h-5 w-5 text-primary" />
+                <ArrowRight className="h-5 w-5 text-[#1d70b8]" />
               </div>
             </Card>
           </Link>
@@ -27,7 +28,7 @@ const Homepage = () => {
             <Card className="p-6 hover:shadow transition-shadow">
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-semibold text-[#1d70b8]">Your progress</h3>
-                <ArrowRight className="h-5 w-5 text-primary" />
+                <ArrowRight className="h-5 w-5 text-[#1d70b8]" />
               </div>
             </Card>
           </Link>
@@ -36,7 +37,7 @@ const Homepage = () => {
             <Card className="p-6 hover:shadow transition-shadow">
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-semibold text-[#1d70b8]">Past and upcoming appointments</h3>
-                <ArrowRight className="h-5 w-5 text-primary" />
+                <ArrowRight className="h-5 w-5 text-[#1d70b8]" />
               </div>
             </Card>
           </Link>
@@ -45,7 +46,7 @@ const Homepage = () => {
             <Card className="p-6 hover:shadow transition-shadow">
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-semibold text-[#1d70b8]">Messages</h3>
-                <ArrowRight className="h-5 w-5 text-primary" />
+                <ArrowRight className="h-5 w-5 text-[#1d70b8]" />
               </div>
             </Card>
           </Link>
@@ -54,7 +55,7 @@ const Homepage = () => {
             <Card className="p-6 hover:shadow transition-shadow">
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-semibold text-[#1d70b8]">Your conditions</h3>
-                <ArrowRight className="h-5 w-5 text-primary" />
+                <ArrowRight className="h-5 w-5 text-[#1d70b8]" />
               </div>
             </Card>
           </Link>
