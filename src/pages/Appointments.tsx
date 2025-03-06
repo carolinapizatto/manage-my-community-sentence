@@ -1,4 +1,3 @@
-
 import { Calendar, ChevronLeft, ExternalLink, Info, MapPin } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
@@ -99,7 +98,6 @@ const Appointments = () => {
           )}
           {!isPast && (
             <Link to={`/view-appointment`} className="text-primary hover:underline text-xs flex items-center">
-              <ExternalLink className="h-3 w-3 mr-1" />
               View
             </Link>
           )}
@@ -127,9 +125,17 @@ const Appointments = () => {
           </Link>
         </div>
 
-        <Alert title="Attending probation appointments is part of complying with your conditions." variant="warning">
-          <p>If you have a problem attending an appointment, you need to tell your probation worker as soon as possible.</p>
-        </Alert>
+        <div className="bg-[#f3f2f1] p-4 mb-6">
+          <div className="flex items-start gap-3">
+            <div className="bg-black text-white rounded-full w-6 h-6 flex items-center justify-center mt-1">
+              <span>!</span>
+            </div>
+            <div>
+              <p className="font-bold mb-2">You must follow these conditions to avoid being recalled to court. If you don't follow these conditions you might be sent to prison.</p>
+              <p>Ask your probation practitioner to explain anything you do not understand.</p>
+            </div>
+          </div>
+        </div>
 
         {upcomingAppointments.length > 0 && <div className="space-y-4">
             <h2 className="text-2xl font-semibold">Upcoming appointments</h2>
