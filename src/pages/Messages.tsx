@@ -1,4 +1,4 @@
-import { ChevronLeft, Paperclip, CalendarX } from "lucide-react";
+import { ChevronLeft, Paperclip } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -63,7 +63,7 @@ const Messages = () => {
     },
     {
       id: 3,
-      subject: "Documentation request",
+      subject: "Documentation request from your probation practitioner",
       content: "Please provide documentation for your recent employment. This is required as part of your supervision conditions.",
       date: "10 July 2023",
       read: false,
@@ -124,20 +124,17 @@ const Messages = () => {
             return (
               <Card 
                 key={threadId} 
-                className={`p-6 hover:shadow transition-shadow cursor-pointer ${latestMessage.messageType === "missed-appointment" ? "border-l-4 border-red-500" : ""}`}
+                className="p-6 hover:shadow transition-shadow cursor-pointer"
                 onClick={() => navigate(`/messages/thread/${threadId}`)}
               >
                 <div className="flex justify-between items-start">
                   <div className="flex-grow">
                     <div className="flex items-center gap-2">
-                      {latestMessage.messageType === "missed-appointment" && (
-                        <CalendarX className="h-5 w-5 text-red-500" />
-                      )}
                       <h3 className="text-lg font-semibold text-primary">{originalSubject}</h3>
                       {hasUnread && <Badge variant="destructive">New</Badge>}
                     </div>
                     <p className="text-sm text-muted mt-1">{latestMessage.date}</p>
-                    <p className={`mt-3 mb-4 ${latestMessage.messageType === "missed-appointment" ? "text-red-700 font-medium" : ""}`}>
+                    <p className="mt-3 mb-4">
                       {latestMessage.content}
                     </p>
                     
@@ -154,7 +151,7 @@ const Messages = () => {
                         className="text-primary hover:underline"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        View thread
+                        View message
                       </Link>
                     </div>
                   </div>
