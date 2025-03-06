@@ -10,7 +10,7 @@ import { useState } from "react";
 const Appointments = () => {
   const [appointments] = useState([{
     id: 1,
-    date: "Monday 8 March 2025",
+    date: "Tuesday 18 March 2025",
     time: "10:00am - 11:00am",
     title: "Community Garden Maintenance",
     type: "Unpaid Work",
@@ -20,7 +20,7 @@ const Appointments = () => {
     isPast: false
   }, {
     id: 2,
-    date: "Wednesday 10 March 2025",
+    date: "Thursday 20 March 2025",
     time: "2:00pm - 2:30pm",
     title: "Probation appointment",
     type: "General",
