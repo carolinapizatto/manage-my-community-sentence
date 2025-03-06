@@ -1,3 +1,4 @@
+
 import { ChevronLeft, Paperclip } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
@@ -27,8 +28,8 @@ const Messages = () => {
     {
       id: 5,
       subject: "Missed appointment",
-      content: "You failed to attend your scheduled probation appointment on 10 August 2023. This is a breach of your supervision requirements. Please contact your probation practitioner as soon as possible to discuss this matter.",
-      date: "11 August 2023",
+      content: "You failed to attend your scheduled probation appointment on 10 March 2024. This is a breach of your supervision requirements. Please contact your probation practitioner as soon as possible to discuss this matter.",
+      date: "11 March 2024",
       read: false,
       sender: "practitioner",
       messageType: "missed-appointment",
@@ -38,7 +39,7 @@ const Messages = () => {
       id: 4,
       subject: "Re: Appointment reminder",
       content: "Thank you for the reminder. I'll be there on time.",
-      date: "3 August 2023",
+      date: "10 March 2024",
       read: true,
       sender: "user",
       thread: 1
@@ -47,7 +48,7 @@ const Messages = () => {
       id: 2,
       subject: "Message from your probation practitioner",
       content: "Please contact me as soon as possible to discuss your progress.",
-      date: "15 July 2023",
+      date: "10 March 2024",
       read: false,
       sender: "practitioner",
       thread: 2
@@ -56,7 +57,7 @@ const Messages = () => {
       id: 3,
       subject: "Documentation request from your probation practitioner",
       content: "Please provide documentation for your recent employment. This is required as part of your supervision conditions.",
-      date: "10 July 2023",
+      date: "10 March 2024",
       read: false,
       sender: "practitioner",
       hasAttachment: false,
@@ -91,10 +92,10 @@ const Messages = () => {
           </Link>
         </div>
 
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-start">
           <div>
             <h1 className="text-3xl font-bold text-secondary mb-2">Messages</h1>
-            <p className="text-muted mb-6">Communicate with your probation practitioner and view important updates about your community sentence</p>
+            <p className="text-muted mb-2">Communicate with your probation practitioner and view important updates about your community sentence</p>
           </div>
           <Button
             onClick={() => navigate("/messages/new")}
