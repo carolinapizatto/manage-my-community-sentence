@@ -10,7 +10,7 @@ import { useState } from "react";
 const Appointments = () => {
   const [appointments] = useState([{
     id: 1,
-    date: "Thursday 27 Feb 2025",
+    date: "Monday 8 March 2025",
     time: "10:00am - 11:00am",
     title: "Community Garden Maintenance",
     type: "Unpaid Work",
@@ -20,11 +20,11 @@ const Appointments = () => {
     isPast: false
   }, {
     id: 2,
-    date: "Thursday 27 Feb 2025",
+    date: "Wednesday 10 March 2025",
     time: "2:00pm - 2:30pm",
     title: "Probation appointment",
     type: "General",
-    location: "National Probation Service, Redfern Building, 30 Hanover Street, Manchester M4 4AH",
+    location: "National Probation Service, 235 Greenwich High Road, London SE10 8NB",
     contact: "Julie Myers",
     description: "Regular probation check-in to discuss progress, any issues faced, and upcoming milestones. Make sure to bring any requested documents or updates for the probation officer.",
     isPast: false
@@ -44,7 +44,7 @@ const Appointments = () => {
     time: "2:00pm - 2:30pm",
     title: "Probation appointment",
     type: "General",
-    location: "National Probation Service, Redfern Building, 30 Hanover Street, Manchester M4 4AH",
+    location: "National Probation Service, 235 Greenwich High Road, London SE10 8NB",
     contact: "Julie Myers",
     description: "",
     isPast: true
