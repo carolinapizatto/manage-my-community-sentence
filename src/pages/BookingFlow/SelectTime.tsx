@@ -42,7 +42,7 @@ const SelectTime = () => {
       <main className="container mx-auto px-4 py-8 space-y-8">
         <div className="flex items-center space-x-2">
           <ChevronLeft className="h-4 w-4" />
-          <button onClick={() => navigate(-1)} className="text-primary hover:underline text-sm">
+          <button onClick={() => navigate(-1)} className="text-[#1d70b8] hover:underline text-sm">
             Back
           </button>
         </div>
@@ -73,7 +73,7 @@ const SelectTime = () => {
                   <Button
                     variant="link"
                     onClick={() => handleTimeSelection(time)}
-                    className="text-primary hover:underline"
+                    className="text-[#1d70b8] hover:underline"
                   >
                     Select
                   </Button>

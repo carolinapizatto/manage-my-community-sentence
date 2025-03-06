@@ -39,6 +39,11 @@
   button {
     @apply transition-all duration-200;
   }
+
+  /* Add specific styling for links to be blue */
+  a:not(.btn) {
+    @apply text-[#1d70b8] hover:underline;
+  }
 }
 
 @layer utilities {

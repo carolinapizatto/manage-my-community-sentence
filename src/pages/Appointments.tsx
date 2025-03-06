@@ -1,4 +1,5 @@
-import { Calendar, ChevronLeft, ExternalLink, Info, MapPin } from "lucide-react";
+
+import { Calendar, ChevronLeft, MapPin } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -66,7 +67,7 @@ const Appointments = () => {
         <div className="space-y-1">
           <h4 className="font-semibold text-base">Key contact</h4>
           <p>{appointment.contact}</p>
-          {!isPast && appointment.type === "General" && appointment.contact === "Julie Myers" && <Link to="/messages/new" className="text-primary hover:underline">
+          {!isPast && appointment.type === "General" && appointment.contact === "Julie Myers" && <Link to="/messages/new" className="text-[#1d70b8] hover:underline">
               Message
             </Link>}
         </div>
@@ -87,7 +88,7 @@ const Appointments = () => {
               <Calendar className="h-3 w-3 mr-1" />
               Add to calendar
             </Button>}
-          {!isPast && <Link to={`/view-appointment`} className="text-primary hover:underline text-xs flex items-center">
+          {!isPast && <Link to={`/view-appointment`} className="text-[#1d70b8] hover:underline text-xs flex items-center">
               View
             </Link>}
         </div>
@@ -99,7 +100,7 @@ const Appointments = () => {
       <main className="container mx-auto px-4 py-8 space-y-8">
         <div className="flex items-center space-x-2">
           <ChevronLeft className="h-4 w-4" />
-          <Link to="/" className="text-primary hover:underline text-sm">
+          <Link to="/" className="text-[#1d70b8] hover:underline text-sm">
             Back to homepage
           </Link>
         </div>
@@ -120,7 +121,7 @@ const Appointments = () => {
             </div>
             <div>
               <p className="font-bold mb-2">Attending appointments is part of complying with your conditions.</p>
-              <p>If you have a problem attending an appointment, you need to tell your probation practitioner as soon as possible </p>
+              <p>If you have a problem attending an appointment, you need to tell your probation practitioner as soon as possible </p>
             </div>
           </div>
         </div>
@@ -143,7 +144,7 @@ const Appointments = () => {
           <Separator />
           <div className="space-y-4">
             <div className="flex flex-wrap gap-4">
-              {['Accessibility statement', 'Privacy policy', 'Terms and conditions', 'Cookies'].map(text => <a key={text} href="#" className="text-primary hover:underline text-sm">
+              {['Accessibility statement', 'Privacy policy', 'Terms and conditions', 'Cookies'].map(text => <a key={text} href="#" className="text-[#1d70b8] hover:underline text-sm">
                   {text}
                 </a>)}
             </div>
