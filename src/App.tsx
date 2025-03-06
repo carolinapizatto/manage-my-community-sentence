@@ -18,7 +18,7 @@ import ViewAppointment from "./pages/ViewAppointment";
 import Messages from "./pages/Messages";
 import MessageDetail from "./pages/MessageDetail";
 import MessageThread from "./pages/MessageThread";
-import LicenceConditions from "./pages/LicenceConditions";
+import Conditions from "./pages/Conditions";
 import Appointments from "./pages/Appointments";
 import AppointmentType from "./pages/AppointmentType";
 import StaffSearch from "./pages/Staff/StaffSearch";
@@ -50,7 +50,7 @@ const App = () => (
           <Route path="/messages/new" element={<MessageDetail />} />
           <Route path="/messages/:threadId" element={<MessageDetail />} />
           <Route path="/messages/thread/:threadId" element={<MessageThread />} />
-          <Route path="/licence-conditions" element={<LicenceConditions />} />
+          <Route path="/conditions" element={<Conditions />} />
           <Route path="/book-appointment" element={<BookAppointment />} />
           <Route path="/book-appointment/select-date" element={<SelectDate />} />
           <Route path="/book-appointment/select-time" element={<SelectTime />} />
