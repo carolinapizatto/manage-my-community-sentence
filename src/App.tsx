@@ -28,6 +28,7 @@ import NotFound from "./pages/NotFound";
 import StaffBookingConfirmation from "./pages/BookingFlow/StaffBookingConfirmation";
 import StaffCheckAnswers from "./pages/Staff/StaffCheckAnswers";
 import CancelAppointment from "./pages/CancelAppointment";
+import PickFlow from "./pages/PickFlow";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/pick-flow" element={<PickFlow />} />
           <Route path="/your-progress" element={<YourProgress />} />
           <Route path="/index" element={<YourProgress />} /> {/* Keeping old route for backward compatibility */}
           <Route path="/index-next-session" element={<IndexNextSession />} />

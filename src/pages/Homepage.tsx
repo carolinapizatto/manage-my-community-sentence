@@ -64,8 +64,8 @@ const Homepage = () => {
 
         <div className="mt-12">
           <div className="border-t border-gray-200 pt-3">
-            <Link to="/staff-search" className="text-sm text-muted hover:underline">
-              Staff-facing flow
+            <Link to="/pick-flow" className="text-sm text-muted hover:underline">
+              Switch views
             </Link>
           </div>
         </div>
