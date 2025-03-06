@@ -44,7 +44,7 @@ const Homepage = () => {
           <Link to="/messages">
             <Card className="p-6 hover:shadow transition-shadow">
               <div className="flex justify-between items-center">
-                <h3 className="text-lg font-semibold text-primary">Messages</h3>
+                <h3 className="text-lg font-semibold text-[#1d70b8]">Messages</h3>
                 <ArrowRight className="h-5 w-5 text-primary" />
               </div>
             </Card>
