@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { Header } from "@/components/Header";
@@ -9,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, Paperclip, Send, CalendarX, Upload, X } from "lucide-react";
+import { ChevronLeft, Paperclip, Send, Upload, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 // Define message type
@@ -229,12 +228,12 @@ const MessageThread = () => {
         </div>
 
         <div>
-          <h1 className="text-3xl font-bold text-secondary mb-2">{threadSubject}</h1>
-          <p className="text-muted mb-6">View your conversation with your probation practitioner</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">{threadSubject}</h1>
+          <p className="text-muted-foreground mb-6">View your conversation with your probation practitioner</p>
         </div>
 
         <div className="space-y-6">
-          {/* Message thread with speech bubbles */}
+          {/* Message thread */}
           <div className="space-y-6">
             {threadMessages.map((message) => (
               <div 
@@ -244,28 +243,20 @@ const MessageThread = () => {
                 <div 
                   className={`max-w-[80%] rounded-lg p-4 ${
                     message.sender === "practitioner" 
-                      ? `bg-[#F1F0FB] text-secondary border-l-4 ${message.messageType === "missed-appointment" ? "border-red-500" : "border-[#1d70b8]"}` 
-                      : "bg-[#E5DEFF] text-secondary border-l-4 border-[#6E59A5]"
+                      ? "bg-[#F1F0FB] text-gray-900 border-l-4 border-[#1d70b8]"
+                      : "bg-[#E5DEFF] text-gray-900 border-l-4 border-[#6E59A5]"
                   }`}
                 >
-                  <div className="mb-2">
+                  <div className="mb-2 flex items-center gap-2">
                     <span className="font-semibold">
                       {message.sender === "practitioner" ? "Your probation practitioner" : "You"}
                     </span>
-                    <span className="text-sm text-muted ml-2">{message.date}</span>
+                    <span className="text-sm text-muted-foreground">{message.date}</span>
                     {message.sender === "practitioner" && !message.read && (
-                      <Badge variant="destructive" className="ml-2">New</Badge>
+                      <Badge variant="destructive" className="ml-auto">New</Badge>
                     )}
                   </div>
-                  {message.messageType === "missed-appointment" && (
-                    <div className="flex items-center gap-2 mb-2 text-red-600">
-                      <CalendarX className="h-5 w-5" />
-                      <span className="font-medium">Missed Appointment</span>
-                    </div>
-                  )}
-                  <p className={`mb-3 ${message.messageType === "missed-appointment" ? "text-red-700 font-medium" : ""}`}>
-                    {message.content}
-                  </p>
+                  <p className="mb-3">{message.content}</p>
                   
                   {message.hasAttachment && message.attachmentName && (
                     <div className="flex items-center gap-2 mt-3 p-2 bg-white rounded">
@@ -279,24 +270,9 @@ const MessageThread = () => {
             ))}
           </div>
           
-          {/* Missed appointment specific response button */}
-          {isMissedAppointmentThread && !showEvidenceUpload && !showReplyForm && threadMessages.filter(m => m.sender === "user").length === 0 && (
-            <Card className="p-6 border-l-4 border-red-500">
-              <h3 className="text-lg font-semibold mb-4">Respond to missed appointment notice</h3>
-              <p className="mb-4">You need to respond to this missed appointment as soon as possible. Please provide a reason and any supporting evidence.</p>
-              <Button 
-                onClick={() => setShowEvidenceUpload(true)}
-                className="bg-primary text-white"
-              >
-                <Upload className="mr-2 h-4 w-4" />
-                Respond with evidence
-              </Button>
-            </Card>
-          )}
-          
           {/* Missed appointment evidence upload form */}
           {showEvidenceUpload && (
-            <Card className="p-6 border-l-4 border-red-500">
+            <Card className="p-6">
               <form onSubmit={handleSubmitEvidence} className="space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="reason" className="font-semibold">Reason for missed appointment</Label>
@@ -327,7 +303,7 @@ const MessageThread = () => {
                         <p className="text-sm font-medium">Uploaded files:</p>
                         <div className="space-y-2">
                           {evidenceFiles.map((file, index) => (
-                            <div key={index} className="flex items-center justify-between p-2 bg-muted rounded">
+                            <div key={index} className="flex items-center justify-between p-2 bg-secondary/50 rounded">
                               <div className="flex items-center gap-2">
                                 <Paperclip className="h-4 w-4" />
                                 <span className="text-sm truncate max-w-[200px]">{file.name}</span>
@@ -357,7 +333,7 @@ const MessageThread = () => {
                   >
                     Cancel
                   </Button>
-                  <Button type="submit" className="bg-primary text-white">
+                  <Button type="submit">
                     <Send className="mr-2 h-4 w-4" />
                     Submit response
                   </Button>
@@ -369,10 +345,7 @@ const MessageThread = () => {
           {/* Regular reply button */}
           {!showReplyForm && !showEvidenceUpload && (
             <div className="flex gap-3">
-              <Button 
-                onClick={() => setShowReplyForm(true)}
-                className={isMissedAppointmentThread && threadMessages.filter(m => m.sender === "user").length === 0 ? "bg-secondary" : ""}
-              >
+              <Button onClick={() => setShowReplyForm(true)}>
                 <Send className="mr-2 h-4 w-4" />
                 Reply
               </Button>
@@ -405,7 +378,7 @@ const MessageThread = () => {
                     />
                   </div>
                   {attachment && (
-                    <p className="text-sm text-muted flex items-center">
+                    <p className="text-sm text-muted-foreground flex items-center">
                       <Paperclip className="h-3 w-3 mr-1" />
                       {attachment.name}
                     </p>
