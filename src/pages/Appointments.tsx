@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Alert } from "@/components/Alert";
-
 const Appointments = () => {
   const [appointments] = useState([{
     id: 1,
@@ -49,10 +48,8 @@ const Appointments = () => {
     description: "",
     isPast: true
   }]);
-  
   const upcomingAppointments = appointments.filter(appointment => !appointment.isPast);
   const pastAppointments = appointments.filter(appointment => appointment.isPast);
-  
   const renderAppointmentCard = (appointment, isPast = false) => <Card key={appointment.id} className="p-6">
       <div className="space-y-4">
         <div className="space-y-1">
@@ -69,11 +66,9 @@ const Appointments = () => {
         <div className="space-y-1">
           <h4 className="font-semibold text-base">Key contact</h4>
           <p>{appointment.contact}</p>
-          {!isPast && appointment.type === "General" && appointment.contact === "Julie Myers" && (
-            <Link to="/messages/new" className="text-primary hover:underline">
+          {!isPast && appointment.type === "General" && appointment.contact === "Julie Myers" && <Link to="/messages/new" className="text-primary hover:underline">
               Message
-            </Link>
-          )}
+            </Link>}
         </div>
         
         <div className="space-y-1">
@@ -81,30 +76,23 @@ const Appointments = () => {
           <p className="whitespace-pre-line">{appointment.location}</p>
         </div>
         
-        {appointment.description && (
-          <p className="text-sm text-muted pt-2">{appointment.description}</p>
-        )}
+        {appointment.description && <p className="text-sm text-muted pt-2">{appointment.description}</p>}
         
         <div className="flex flex-wrap gap-4 pt-2">
           <Button variant="outline" size="sm" className="text-xs flex items-center">
             <MapPin className="h-3 w-3 mr-1" />
             View on map
           </Button>
-          {!isPast && (
-            <Button variant="outline" size="sm" className="text-xs flex items-center">
+          {!isPast && <Button variant="outline" size="sm" className="text-xs flex items-center">
               <Calendar className="h-3 w-3 mr-1" />
               Add to calendar
-            </Button>
-          )}
-          {!isPast && (
-            <Link to={`/view-appointment`} className="text-primary hover:underline text-xs flex items-center">
+            </Button>}
+          {!isPast && <Link to={`/view-appointment`} className="text-primary hover:underline text-xs flex items-center">
               View
-            </Link>
-          )}
+            </Link>}
         </div>
       </div>
     </Card>;
-  
   return <div className="min-h-screen bg-[#f3f2f1]">
       <Header />
       
@@ -131,8 +119,8 @@ const Appointments = () => {
               <span>!</span>
             </div>
             <div>
-              <p className="font-bold mb-2">You must follow these conditions to avoid being recalled to court. If you don't follow these conditions you might be sent to prison.</p>
-              <p>Ask your probation practitioner to explain anything you do not understand.</p>
+              <p className="font-bold mb-2">Attending appointments is part of complying with your conditions.</p>
+              <p>If you have a problem attending an appointment, you need to tell your probation practitioner as soon as possible </p>
             </div>
           </div>
         </div>
@@ -165,5 +153,4 @@ const Appointments = () => {
       </main>
     </div>;
 };
-
 export default Appointments;
