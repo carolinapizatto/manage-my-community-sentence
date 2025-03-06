@@ -23,8 +23,7 @@ const Notification = () => {
             variant="error"
             className="border-l-4 border-red-600 bg-red-50"
           >
-            <div className="flex items-start gap-2">
-              <XCircle className="h-5 w-5 text-red-600 mt-0.5" />
+            <div className="flex items-start">
               <div>
                 <p className="font-semibold text-red-800">Missed appointment</p>
                 <p className="mt-1">
@@ -34,7 +33,7 @@ const Notification = () => {
                   </Link>{" "}
                   and explain why you missed this. If you fail to do that, this might count as a breach of your{" "}
                   <Link to="/conditions" className="text-blue-600 underline">
-                    conditions
+                    your conditions
                   </Link>.
                 </p>
               </div>
@@ -45,8 +44,7 @@ const Notification = () => {
             variant="info"
             className="border-l-4 border-blue-600 bg-blue-50"
           >
-            <div className="flex items-start gap-2">
-              <Info className="h-5 w-5 text-blue-600 mt-0.5" />
+            <div className="flex items-start">
               <div>
                 <p className="font-semibold text-blue-800">Appointment reminder</p>
                 <p className="mt-1">
@@ -94,7 +92,7 @@ const Notification = () => {
             <Card className="p-6 hover:shadow transition-shadow">
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-semibold text-primary">Messages</h3>
-                <Badge variant="destructive" className="ml-2">1</Badge>
+                <Badge variant="destructive" className="mr-auto ml-2">1</Badge>
                 <ArrowRight className="h-5 w-5 text-primary" />
               </div>
             </Card>
