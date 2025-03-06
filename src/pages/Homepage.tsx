@@ -35,7 +35,7 @@ const Homepage = () => {
           <Link to="/appointments">
             <Card className="p-6 hover:shadow transition-shadow">
               <div className="flex justify-between items-center">
-                <h3 className="text-lg font-semibold text-primary">Past and upcoming appointments</h3>
+                <h3 className="text-lg font-semibold text-[#1d70b8]">Past and upcoming appointments</h3>
                 <ArrowRight className="h-5 w-5 text-primary" />
               </div>
             </Card>
