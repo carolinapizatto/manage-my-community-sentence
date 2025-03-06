@@ -1,12 +1,9 @@
-
 import { ArrowRight } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-
 const Homepage = () => {
-  return (
-    <div className="min-h-screen bg-[#f3f2f1]">
+  return <div className="min-h-screen bg-[#f3f2f1]">
       <Header />
       
       <main className="container mx-auto px-4 py-8 space-y-8">
@@ -20,7 +17,7 @@ const Homepage = () => {
           <Link to="/your-details">
             <Card className="p-6 hover:shadow transition-shadow">
               <div className="flex justify-between items-center">
-                <h3 className="text-lg font-semibold text-primary">Your details</h3>
+                <h3 className="text-lg font-semibold text-[#1d70b8]">Your details</h3>
                 <ArrowRight className="h-5 w-5 text-primary" />
               </div>
             </Card>
@@ -63,8 +60,6 @@ const Homepage = () => {
           </Link>
         </div>
       </main>
-    </div>
-  );
+    </div>;
 };
-
 export default Homepage;
