@@ -63,12 +63,12 @@ const YourDetails = () => {
                   <div>
                     <p className="text-sm text-muted">Email</p>
                     <p>carolinapizatto@gmail.com</p>
-                    <Button variant="link" className="text-primary p-0 h-auto">Change</Button>
+                    <Button variant="link" className="text-[#1d70b8] p-0 h-auto">Change</Button>
                   </div>
                   <div>
                     <p className="text-sm text-muted">Phone number</p>
                     <p>07418 028044</p>
-                    <Button variant="link" className="text-primary p-0 h-auto">Change</Button>
+                    <Button variant="link" className="text-[#1d70b8] p-0 h-auto">Change</Button>
                   </div>
                 </div>
               </div>

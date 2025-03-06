@@ -1,3 +1,4 @@
+
 import { ChevronLeft, Paperclip } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
@@ -130,7 +131,7 @@ const Messages = () => {
                 <div className="flex justify-between items-start">
                   <div className="flex-grow">
                     <div className="flex items-center gap-2">
-                      <h3 className="text-lg font-semibold text-primary">{originalSubject}</h3>
+                      <h3 className="text-lg font-semibold text-[#1d70b8]">{originalSubject}</h3>
                       {hasUnread && <Badge variant="destructive">New</Badge>}
                     </div>
                     <p className="text-sm text-muted mt-1">{latestMessage.date}</p>

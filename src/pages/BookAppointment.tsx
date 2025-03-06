@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeft, Search, CalendarDays, Filter, Map as MapIcon, ListIcon } from "lucide-react";
@@ -176,7 +177,7 @@ const BookAppointment = () => {
                     />
                   </PopoverContent>
                 </Popover>
-                <Button variant="link" className="text-primary">
+                <Button variant="link" className="text-[#1d70b8]">
                   Change date range
                 </Button>
               </div>

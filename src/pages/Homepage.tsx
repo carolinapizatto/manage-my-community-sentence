@@ -12,7 +12,7 @@ const Homepage = () => {
       <main className="container mx-auto px-4 py-8 space-y-8">
         <div>
           <h2 className="text-3xl font-bold text-secondary mb-2">Welcome, Carolina</h2>
-          <p className="text-muted mb-6">View and manage your community sentence</p>
+          <p className="text-[#1d70b8] mb-6">View and manage your community sentence</p>
         </div>
 
         {/* Navigation cards */}
