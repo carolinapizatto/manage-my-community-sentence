@@ -62,7 +62,10 @@ const StaffViewPlacement = () => {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold text-secondary">Attendee list</h3>
-            <Button onClick={() => navigate('/staff-book', { state: { placement } })} variant="link" className="text-[#1d70b8]">
+            <Button 
+              onClick={() => navigate('/staff-book', { state: { placement } })} 
+              className="bg-[#1d70b8] hover:bg-[#1d70b8]/90"
+            >
               Add attendee
             </Button>
           </div>
