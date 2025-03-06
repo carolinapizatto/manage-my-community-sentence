@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ChevronLeft, UserPlus, AlertTriangle } from "lucide-react";
+import { ChevronLeft, AlertTriangle } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -30,7 +30,7 @@ const StaffViewPlacement = () => {
       <main className="container mx-auto px-4 py-8 space-y-8">
         <div className="flex items-center space-x-2">
           <ChevronLeft className="h-4 w-4" />
-          <button onClick={() => navigate(-1)} className="text-primary hover:underline text-sm">
+          <button onClick={() => navigate(-1)} className="text-[#1d70b8] hover:underline text-sm">
             Back to search
           </button>
         </div>
@@ -46,7 +46,7 @@ const StaffViewPlacement = () => {
             <div className="space-y-2">
               <h3 className="text-sm font-medium text-muted">Booked slots</h3>
               <p className="text-2xl font-bold">{bookedSlots}/{totalSlots}</p>
-              <Progress value={(bookedSlots/totalSlots) * 100} />
+              <Progress value={(bookedSlots/totalSlots) * 100} className="bg-secondary [&>div]:bg-[#1d70b8]" />
             </div>
             <div className="space-y-2">
               <h3 className="text-sm font-medium text-muted">Slots remaining</h3>
@@ -62,30 +62,33 @@ const StaffViewPlacement = () => {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold text-secondary">Attendee list</h3>
-            <Button onClick={() => navigate('/staff-book', { state: { placement } })}>
-              <UserPlus className="h-4 w-4 mr-2" />
+            <Button onClick={() => navigate('/staff-book', { state: { placement } })} variant="link" className="text-[#1d70b8]">
               Add attendee
             </Button>
           </div>
 
           <Card>
             <div className="rounded-md border">
-              <div className="grid grid-cols-5 gap-4 p-4 font-medium border-b">
+              <div className="grid grid-cols-6 gap-4 p-4 font-medium border-b">
                 <div>User ID</div>
                 <div className="col-span-2">Name</div>
                 <div>Hours remaining</div>
                 <div>Attendance rate</div>
+                <div>Actions</div>
               </div>
               <div className="divide-y">
                 {attendees.map((attendee) => (
-                  <div key={attendee.id} className="grid grid-cols-5 gap-4 p-4 items-center">
+                  <div key={attendee.id} className="grid grid-cols-6 gap-4 p-4 items-center">
                     <div className="text-sm">{attendee.id}</div>
                     <div className="col-span-2">{attendee.name}</div>
                     <div>{attendee.hoursRemaining} hours</div>
-                    <div className="flex justify-between items-center">
-                      <span>{attendee.attendanceRate}</span>
-                      <button className="text-primary hover:underline text-sm">
-                        Remove attendee
+                    <div>{attendee.attendanceRate}</div>
+                    <div className="flex space-x-4">
+                      <button className="text-[#1d70b8] hover:underline text-sm">
+                        View
+                      </button>
+                      <button className="text-[#1d70b8] hover:underline text-sm">
+                        Remove
                       </button>
                     </div>
                   </div>
