@@ -1,4 +1,3 @@
-
 import { ChevronLeft, Paperclip } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
@@ -34,15 +33,6 @@ const Messages = () => {
       sender: "practitioner",
       messageType: "missed-appointment",
       thread: 4
-    },
-    {
-      id: 1,
-      subject: "Appointment reminder",
-      content: "You have an appointment scheduled for Tuesday, 15 August at 10:00am at Lambeth Community Payback.",
-      date: "2 August 2023",
-      read: true,
-      sender: "practitioner",
-      thread: 1
     },
     {
       id: 4,
@@ -132,7 +122,7 @@ const Messages = () => {
                   <div className="flex-grow">
                     <div className="flex items-center gap-2">
                       <h3 className="text-lg font-semibold text-[#1d70b8]">{originalSubject}</h3>
-                      {hasUnread && <Badge variant="destructive">New</Badge>}
+                      {hasUnread && <Badge variant="destructive">Unread</Badge>}
                     </div>
                     <p className="text-sm text-muted mt-1">{latestMessage.date}</p>
                     <p className="mt-3 mb-4">
