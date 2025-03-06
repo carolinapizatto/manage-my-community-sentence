@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { Header } from "@/components/Header";
@@ -22,7 +23,7 @@ interface Message {
   hasAttachment?: boolean;
   attachmentName?: string;
   thread?: number;
-  messageType?: "missed-appointment";
+  messageType?: "missed-appointment" | "appointment-reminder" | "automatic";
 }
 
 const MessageThread = () => {
@@ -54,6 +55,7 @@ const MessageThread = () => {
       date: "2 August 2023",
       read: true,
       sender: "practitioner",
+      messageType: "appointment-reminder",
       thread: 1
     },
     {
@@ -91,6 +93,7 @@ const MessageThread = () => {
   );
   
   const isMissedAppointmentThread = threadMessages.some(m => m.messageType === "missed-appointment");
+  const isAutomaticReminderThread = threadMessages.some(m => m.messageType === "appointment-reminder");
   const hasUnreadMessages = threadMessages.some(m => !m.read && m.sender === "practitioner");
   
   // Get the thread subject from the first message in the thread
@@ -342,14 +345,23 @@ const MessageThread = () => {
             </Card>
           )}
           
-          {/* Regular reply button */}
-          {!showReplyForm && !showEvidenceUpload && (
+          {/* Regular reply button - only show for non-automatic messages */}
+          {!showReplyForm && !showEvidenceUpload && !isAutomaticReminderThread && (
             <div className="flex gap-3">
               <Button onClick={() => setShowReplyForm(true)}>
                 <Send className="mr-2 h-4 w-4" />
                 Reply
               </Button>
             </div>
+          )}
+          
+          {/* Information message for automatic reminders */}
+          {isAutomaticReminderThread && (
+            <Card className="p-4 bg-gray-100 border-gray-200">
+              <p className="text-muted-foreground text-sm">
+                This is an automatic reminder message and cannot be replied to directly.
+              </p>
+            </Card>
           )}
           
           {/* Regular reply form */}
