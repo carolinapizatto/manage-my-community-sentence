@@ -1,4 +1,3 @@
-
 import { ChevronLeft, Paperclip } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/ui/card";
@@ -34,15 +33,6 @@ const Messages = () => {
       sender: "practitioner",
       messageType: "missed-appointment",
       thread: 4
-    },
-    {
-      id: 4,
-      subject: "Re: Appointment reminder",
-      content: "Thank you for the reminder. I'll be there on time.",
-      date: "10 March 2024",
-      read: true,
-      sender: "user",
-      thread: 1
     },
     {
       id: 2,
